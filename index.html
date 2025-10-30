@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JivanSetu - bridge of the Life</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #00A86B 0%, #A1D9FF 50%, #ffffff 100%);
+        }
+        
+        .heart-pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 168, 107, 0.2);
+        }
+        
+        .counter {
+            font-weight: 700;
+            color: #00A86B;
+        }
+        
+        .fact-card {
+            background: linear-gradient(45deg, #f0fdf4, #ecfdf5);
+            border-left: 4px solid #00A86B;
+        }
+    </style>
+    
+</head>
+<body class="bg-gradient-to-br from-green-50 to-emerald-50 min-h-full">
+    
+   <!-- Header / Navigation -->
+    <header class="bg-white/90 backdrop-blur-sm shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="bg-red-500 p-3 rounded-full heartbeat">
+                        <span class="text-white text-2xl">❤️</span>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">JivanSetu</h1>
+                        <p class="text-sm text-gray-600">SaveLife</p>
+                    </div>
+                </div>
+     <!-- Navigation -->
+<nav class="hidden lg:flex space-x-8">
+  <a href="index.html" class="text-gray-700 hover:text-red-500 transition-colors font-medium">Home</a>
+  <a href="aboutus.html" class="text-gray-700 hover:text-red-500 transition-colors font-medium">About Us</a>
+  <a href="becomedonor.html" class="text-gray-700 hover:text-red-500 transition-colors font-medium">Become a Donor</a>
+  <a href="berecepient.html" class="text-gray-700 hover:text-red-500 transition-colors font-medium">Find a Recipient</a>
+  <a href="hospital.html" class="text-gray-700 hover:text-red-500 transition-colors font-medium">Hospitals</a>
+<a href="reports.html" class="text-gray-700 hover:text-red-500 transition-colors font-medium">Reports</a>
+  <a href="contact.html" class="text-gray-700 hover:text-red-500 transition-colors font-medium">Contact</a></nav>
+  <!-- Profile Icon -->
+               <div class="relative">
+    <button onclick="toggleProfileMenu()" class="flex items-center space-x-2 bg-green-100 hover:bg-green-200 p-3 rounded-full transition-colors relative">
+        <span class="text-2xl">👤</span>
+        <div class="notification-badge bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center absolute -top-1 -right-1">3</div>
+    </button>
+    <div id="profileMenu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-2 z-50">
+        <a href="login.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">🔐 Login/Register</a>
+        <a href="profile.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">👤 My Profile</a>
+        <a href="setting.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">⚙️ Settings</a>
+        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">🚪 Logout</a>
+    </div>
+</div>
+  </div>
+        </div>
+    </header>
+
+
+     <!-- Hero Section -->
+    <section class="gradient-bg min-h-full py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="floating mb-8">
+                    <div class="heart-pulse text-8xl">❤️</div>
+                </div>
+                <h1 class="text-5xl md:text-6xl font-bold text-white mb-6">
+                    Give Life. <span class="text-green-100">Live Forever.</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto">
+                    Every donor can save up to 8 lives. Be someone's reason to live.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center"> 
+    <!-- Become a Donor -->
+    <button onclick="window.location.href='becomedonor.html'" 
+        class="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all transform hover:scale-105 shadow-lg">
+        💚 Become a Donor
+    </button>
+
+    <!-- Find an Organ -->
+    <button onclick="window.location.href='findorgan.html'" 
+        class="bg-white hover:bg-gray-50 text-green-600 px-8 py-4 rounded-full font-semibold text-lg transition-all transform hover:scale-105 shadow-lg">
+        🔍 Find an Organ
+    </button>
+
+    <!-- Learn More -->
+    <button onclick="window.location.href='learn.html'" 
+        class="border-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-white px-8 py-4 rounded-full font-semibold text-lg transition-all">
+        📚 Learn More
+    </button>
+</div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Actions -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Take Action Today</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-lg card-hover cursor-pointer">
+                    <div class="text-5xl mb-4 text-center">🧍‍♀️</div>
+                    <h3 class="text-xl font-semibold text-center mb-4">Register as Donor</h3>
+                    <p class="text-gray-600 text-center mb-6">Join thousands who've chosen to give the gift of life</p>
+                    <button onclick="window.location.href='register.html'" 
+                     class="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-full font-semibold transition-all">
+                        Register Now
+                    </button>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg card-hover cursor-pointer">
+                    <div class="text-5xl mb-4 text-center">🫀</div>
+                    <h3 class="text-xl font-semibold text-center mb-4">Register as Recipient</h3>
+                    <p class="text-gray-600 text-center mb-6">Find hope and connect with potential donors</p>
+                    <button onclick="window.location.href='gethelp.html'" class="w-full bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-full font-semibold transition-all">
+                        Get Help
+                    </button>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg card-hover cursor-pointer">
+                    <div class="text-5xl mb-4 text-center">🏥</div>
+                    <h3 class="text-xl font-semibold text-center mb-4">Connect with Hospital</h3>
+                    <p class="text-gray-600 text-center mb-6">Healthcare providers can join our network</p>
+                    <button onclick="window.location.href='partner.html'"class="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-full font-semibold transition-all">
+                        Partner With Us
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Together We've Made a Difference</h2>
+                <p class="text-xl text-gray-600">Real impact, real lives saved</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="text-5xl counter mb-4" id="donors">1,240</div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Lives Saved</h3>
+                    <p class="text-gray-600">Through generous donors</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-5xl counter mb-4" id="organs">3,456</div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Donors Registered</h3>
+                    <p class="text-gray-600">Ready to give life</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-5xl counter mb-4" id="hospitals">89</div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Partner Hospitals</h3>
+                    <p class="text-gray-600">Across the network</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awareness Section -->
+    <section class="py-16 bg-green-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Know the Facts</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="fact-card p-6 rounded-lg">
+                    <div class="text-2xl mb-3">✅</div>
+                    <p class="font-semibold text-gray-800">"You can donate organs even after death and still have an open-casket funeral."</p>
+                </div>
+                <div class="fact-card p-6 rounded-lg">
+                    <div class="text-2xl mb-3">🙏</div>
+                    <p class="font-semibold text-gray-800">"Most religions support organ donation as an act of compassion."</p>
+                </div>
+                <div class="fact-card p-6 rounded-lg">
+                    <div class="text-2xl mb-3">👁️</div>
+                    <p class="font-semibold text-gray-800">"One eye donor can restore sight to two people."</p>
+                </div>
+            </div>
+            <div class="text-center mt-8">
+                <button class="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-full font-semibold transition-all">
+                    Know More Facts
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stories of Hope -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Stories of Hope</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gradient-to-br from-blue-50 to-green-50 p-6 rounded-2xl shadow-lg">
+                    <div class="text-4xl mb-4">💝</div>
+                    <h3 class="text-lg font-semibold mb-3">Riya's New Beginning</h3>
+                    <p class="text-gray-700 mb-4">"I received a new heart from a selfless donor. Now I'm thriving, living my dreams, and grateful every day."</p>
+                    <span class="text-sm text-green-600 font-medium">Heart Recipient, 2023</span>
+                </div>
+                <div class="bg-gradient-to-br from-purple-50 to-blue-50 p-6 rounded-2xl shadow-lg">
+                    <div class="text-4xl mb-4">👁️</div>
+                    <h3 class="text-lg font-semibold mb-3">Arjun Sees Again</h3>
+                    <p class="text-gray-700 mb-4">"After 5 years of darkness, a cornea donation gave me back the world. I can see my daughter's smile again."</p>
+                    <span class="text-sm text-blue-600 font-medium">Cornea Recipient, 2023</span>
+                </div>
+                <div class="bg-gradient-to-br from-green-50 to-yellow-50 p-6 rounded-2xl shadow-lg">
+                    <div class="text-4xl mb-4">🫁</div>
+                    <h3 class="text-lg font-semibold mb-3">Maya's Second Chance</h3>
+                    <p class="text-gray-700 mb-4">"A lung transplant saved my life. I'm now back to teaching and inspiring my students every day."</p>
+                    <span class="text-sm text-purple-600 font-medium">Lung Recipient, 2024</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Campaign & Events -->
+    <section class="py-16 bg-gradient-to-r from-green-600 to-blue-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-white mb-6">Join Our Mission</h2>
+            <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-2xl p-8 max-w-2xl mx-auto">
+                <div class="text-4xl mb-4">🏃‍♀️</div>
+                <h3 class="text-2xl font-bold text-white mb-4">October Organ Donation Marathon</h3>
+                <p class="text-white mb-6">Join thousands of supporters in raising awareness and funds for organ donation research and support.</p>
+                <button class="bg-white text-green-600 hover:bg-gray-100 px-8 py-3 rounded-full font-semibold transition-all transform hover:scale-105">
+                    Join Now
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="text-2xl font-bold mb-4">🌿 LifeLink</div>
+                    <p class="text-gray-300 mb-4">Building hope, one organ at a time.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">📘</a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">📷</a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">🐦</a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-colors">💼</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="aboutus.html" class="text-gray-300 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">How It Works</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Success Stories</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">FAQs</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2">
+                        <li><a href="contact.html" class="text-gray-300 hover:text-white transition-colors">Contact Us</a></li>
+                        <li><a href="gethelp.html" class="text-gray-300 hover:text-white transition-colors">Help Center</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Emergency</h4>
+                    <p class="text-gray-300 mb-2">24/7 Organ Matching</p>
+                    <p class="text-green-400 font-semibold text-lg">1-800-LIFELINK</p>
+                    <p class="text-gray-300 text-sm mt-2">Available nationwide</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-300">&copy; 2024 LifeLink. All rights reserved. Donate life, spread light.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+<script>
+    // Toggle Profile Menu
+    function toggleProfileMenu() {
+        const menu = document.getElementById('profileMenu');
+        menu.classList.toggle('hidden');
+    }
+
+    // Close profile menu when clicking outside
+    window.addEventListener('click', function(e) {
+        const menu = document.getElementById('profileMenu');
+        const button = document.querySelector('button[onclick="toggleProfileMenu()"]');
+        if (!menu.contains(e.target) && !button.contains(e.target)) {
+            menu.classList.add('hidden');
+        }
+    });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98d6901b6016a5d3',t:'MTc2MDI3MTc0OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

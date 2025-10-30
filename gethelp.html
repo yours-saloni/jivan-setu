@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Help — We're Here for You | LifeLink</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        .emergency-pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .chatbot-bounce {
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b-2 border-green-500">
+        <div class="max-w-6xl mx-auto px-4 py-6">
+            <h1 class="text-4xl font-bold text-gray-800 text-center">🆘 Get Help — We're Here for You</h1>
+            <p class="text-lg text-gray-600 text-center mt-4 max-w-3xl mx-auto">
+                Need assistance with organ donation, registration, or medical queries? 
+                Our support team is available to guide you through the process, answer your questions, and provide immediate help in emergencies. 💚
+            </p>
+            <p class="text-center text-green-600 font-semibold mt-3">✨ Because every question matters when a life is at stake.</p>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-8 space-y-12">
+        <!-- Emergency Help Section -->
+        <section class="bg-red-50 border-2 border-red-200 rounded-xl p-6 emergency-pulse">
+            <h2 class="text-2xl font-bold text-red-700 mb-4 flex items-center">
+                📞 Emergency Help
+            </h2>
+            <div class="grid md:grid-cols-3 gap-4">
+                <div class="bg-red-600 text-white p-4 rounded-lg text-center">
+                    <div class="text-lg font-bold">Emergency Helpline</div>
+                    <div class="text-2xl font-mono">1800-XXX-XXXX</div>
+                </div>
+                <div class="bg-green-600 text-white p-4 rounded-lg text-center">
+                    <div class="text-lg font-bold">Donor/Recipient Support</div>
+                    <div class="text-xl font-mono">+91 98765 43210</div>
+                </div>
+                <div class="bg-blue-600 text-white p-4 rounded-lg text-center">
+                    <div class="text-lg font-bold">Email Support</div>
+                    <div class="text-lg">support@lifelink.org</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Support Request Form -->
+        <section class="bg-white rounded-xl shadow-lg p-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                📝 Send a Help Request
+            </h2>
+            <form id="supportForm" class="space-y-6">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Name</label>
+                        <input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Email</label>
+                        <input type="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                    </div>
+                </div>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Contact Number</label>
+                        <input type="tel" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Subject</label>
+                        <select required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                            <option value="">Select a topic</option>
+                            <option value="registration">Registration</option>
+                            <option value="donor-help">Donor Help</option>
+                            <option value="recipient-help">Recipient Help</option>
+                            <option value="hospital-query">Hospital Query</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Message / Query</label>
+                    <textarea required rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="Please describe your question or concern..."></textarea>
+                </div>
+                <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-6 rounded-lg transition duration-300 flex items-center justify-center">
+                    💚 Get Help
+                </button>
+            </form>
+            <div id="confirmationMessage" class="hidden mt-6 p-4 bg-green-100 border border-green-300 rounded-lg">
+                <p class="text-green-800 font-semibold">✅ Your request has been received! Our support team will contact you shortly.</p>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="bg-white rounded-xl shadow-lg p-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                📚 Frequently Asked Questions
+            </h2>
+            <div class="space-y-4">
+                <div class="faq-item border border-gray-200 rounded-lg">
+                    <button class="w-full text-left px-6 py-4 font-semibold text-gray-800 hover:bg-gray-50 flex justify-between items-center" onclick="toggleFAQ(0)">
+                        How to register as a donor?
+                        <span class="faq-icon text-2xl">+</span>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-4 text-gray-600">
+                        <p>To register as an organ donor, visit our registration page, fill out the required information including your medical history, and submit the form. You'll receive a donor card within 7-10 business days.</p>
+                    </div>
+                </div>
+                <div class="faq-item border border-gray-200 rounded-lg">
+                    <button class="w-full text-left px-6 py-4 font-semibold text-gray-800 hover:bg-gray-50 flex justify-between items-center" onclick="toggleFAQ(1)">
+                        How to find compatible organs?
+                        <span class="faq-icon text-2xl">+</span>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-4 text-gray-600">
+                        <p>Our matching system uses blood type, tissue compatibility, organ size, and medical urgency to find the best matches. Recipients are automatically notified when compatible organs become available.</p>
+                    </div>
+                </div>
+                <div class="faq-item border border-gray-200 rounded-lg">
+                    <button class="w-full text-left px-6 py-4 font-semibold text-gray-800 hover:bg-gray-50 flex justify-between items-center" onclick="toggleFAQ(2)">
+                        What documents are required?
+                        <span class="faq-icon text-2xl">+</span>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-4 text-gray-600">
+                        <p>You'll need a valid government ID, medical records, blood test results, and consent forms. For recipients, additional medical documentation from your treating physician is required.</p>
+                    </div>
+                </div>
+                <div class="faq-item border border-gray-200 rounded-lg">
+                    <button class="w-full text-left px-6 py-4 font-semibold text-gray-800 hover:bg-gray-50 flex justify-between items-center" onclick="toggleFAQ(3)">
+                        Hospital partnership queries
+                        <span class="faq-icon text-2xl">+</span>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-4 text-gray-600">
+                        <p>Hospitals can partner with us by meeting our certification requirements, completing the partnership application, and undergoing our quality assessment process. Contact our hospital relations team for more details.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Location Support -->
+        <section class="bg-white rounded-xl shadow-lg p-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                🌍 Find Support Centers Near You
+            </h2>
+            <div class="bg-gray-100 rounded-lg p-8 text-center">
+                <div class="text-6xl mb-4">🗺️</div>
+                <p class="text-gray-600 mb-4">Locate the nearest support center near you</p>
+                <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+                    Find Nearest Center
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Chatbot -->
+    <div id="chatbot" class="fixed bottom-6 right-6 z-50">
+        <div id="chatWindow" class="hidden bg-white rounded-xl shadow-2xl w-80 h-96 mb-4 flex flex-col">
+            <div class="bg-green-600 text-white p-4 rounded-t-xl">
+                <div class="flex justify-between items-center">
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center mr-3">
+                            <span class="text-green-600 font-bold">L</span>
+                        </div>
+                        <div>
+                            <div class="font-bold">Lina</div>
+                            <div class="text-xs opacity-90">Support Assistant</div>
+                        </div>
+                    </div>
+                    <button onclick="toggleChat()" class="text-white hover:text-gray-200">✕</button>
+                </div>
+            </div>
+            <div id="chatMessages" class="flex-1 p-4 overflow-y-auto">
+                <div class="bg-gray-100 rounded-lg p-3 mb-3">
+                    <p class="text-sm">👋 Hi! I'm Lina. How can I assist you today?</p>
+                </div>
+                <div class="space-y-2">
+                    <button onclick="sendQuickReply('Register as a Donor')" class="w-full text-left bg-blue-50 hover:bg-blue-100 p-2 rounded text-sm transition duration-200">
+                        Register as a Donor
+                    </button>
+                    <button onclick="sendQuickReply('Find a Hospital')" class="w-full text-left bg-blue-50 hover:bg-blue-100 p-2 rounded text-sm transition duration-200">
+                        Find a Hospital
+                    </button>
+                    <button onclick="sendQuickReply('Check My Report')" class="w-full text-left bg-blue-50 hover:bg-blue-100 p-2 rounded text-sm transition duration-200">
+                        Check My Report
+                    </button>
+                    <button onclick="sendQuickReply('Urgent Help / Emergency')" class="w-full text-left bg-red-50 hover:bg-red-100 p-2 rounded text-sm transition duration-200 text-red-700">
+                        🆘 Urgent Help / Emergency
+                    </button>
+                </div>
+            </div>
+            <div class="p-4 border-t">
+                <div class="flex">
+                    <input type="text" id="chatInput" placeholder="Type your message..." class="flex-1 px-3 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                    <button onclick="sendMessage()" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-r-lg transition duration-300">
+                        Send
+                    </button>
+                </div>
+            </div>
+        </div>
+        <button id="chatToggle" onclick="toggleChat()" class="bg-green-600 hover:bg-green-700 text-white w-16 h-16 rounded-full shadow-lg flex items-center justify-center text-2xl chatbot-bounce transition duration-300">
+            💬
+        </button>
+    </div>
+
+    <script>
+        // Support Form Handling
+        document.getElementById('supportForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show confirmation message
+            document.getElementById('confirmationMessage').classList.remove('hidden');
+            document.getElementById('confirmationMessage').classList.add('fade-in');
+            
+            // Reset form
+            this.reset();
+            
+            // Scroll to confirmation
+            document.getElementById('confirmationMessage').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // FAQ Toggle Function
+        function toggleFAQ(index) {
+            const faqItems = document.querySelectorAll('.faq-item');
+            const content = faqItems[index].querySelector('.faq-content');
+            const icon = faqItems[index].querySelector('.faq-icon');
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                content.classList.add('fade-in');
+                icon.textContent = '−';
+            } else {
+                content.classList.add('hidden');
+                icon.textContent = '+';
+            }
+        }
+
+        // Chatbot Functions
+        function toggleChat() {
+            const chatWindow = document.getElementById('chatWindow');
+            const chatToggle = document.getElementById('chatToggle');
+            
+            if (chatWindow.classList.contains('hidden')) {
+                chatWindow.classList.remove('hidden');
+                chatWindow.classList.add('fade-in');
+                chatToggle.textContent = '✕';
+                chatToggle.classList.remove('chatbot-bounce');
+            } else {
+                chatWindow.classList.add('hidden');
+                chatToggle.textContent = '💬';
+                chatToggle.classList.add('chatbot-bounce');
+            }
+        }
+
+        function sendQuickReply(message) {
+            addMessage(message, 'user');
+            
+            // Simulate bot response
+            setTimeout(() => {
+                let response = '';
+                switch(message) {
+                    case 'Register as a Donor':
+                        response = 'Great! I can help you register as a donor. You\'ll need to provide basic information and medical history. Would you like me to guide you through the process?';
+                        break;
+                    case 'Find a Hospital':
+                        response = 'I can help you find partner hospitals in your area. Please share your location or preferred city, and I\'ll show you the nearest facilities.';
+                        break;
+                    case 'Check My Report':
+                        response = 'To check your report, I\'ll need to verify your identity. Please provide your registration ID or the email address you used to register.';
+                        break;
+                    case 'Urgent Help / Emergency':
+                        response = '🚨 For immediate emergency assistance, please call our 24/7 helpline at 1800-XXX-XXXX. If this is a medical emergency, also contact your local emergency services. How else can I assist you?';
+                        break;
+                    default:
+                        response = 'Thank you for your message. Our support team will help you with this request. Is there anything specific I can assist you with right now?';
+                }
+                addMessage(response, 'bot');
+            }, 1000);
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (message) {
+                addMessage(message, 'user');
+                input.value = '';
+                
+                // Simulate bot response
+                setTimeout(() => {
+                    addMessage('Thank you for your message. I\'m connecting you with our support team who will provide detailed assistance. In the meantime, you can also fill out our support form above for a faster response.', 'bot');
+                }, 1000);
+            }
+        }
+
+        function addMessage(message, sender) {
+            const chatMessages = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            
+            if (sender === 'user') {
+                messageDiv.className = 'bg-green-100 rounded-lg p-3 mb-3 ml-8';
+                messageDiv.innerHTML = `<p class="text-sm text-right">${message}</p>`;
+            } else {
+                messageDiv.className = 'bg-gray-100 rounded-lg p-3 mb-3 mr-8';
+                messageDiv.innerHTML = `<p class="text-sm">${message}</p>`;
+            }
+            
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Allow Enter key to send messages
+        document.getElementById('chatInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98d79163d03e8fbc',t:'MTc2MDI4MjI4Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

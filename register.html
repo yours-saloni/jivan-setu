@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Now — Join the LifeLink Community</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #dbf208 0%, #f1064d 100%);
+        }
+        
+        .input-focus:focus {
+            background-color: #E6F7F1;
+            border-color: #00A86B;
+            box-shadow: 0 0 0 3px rgba(0, 168, 107, 0.1);
+        }
+        
+        .hover-scale:hover {
+            transform: scale(1.02);
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .progress-bar {
+            transition: width 0.3s ease-in-out;
+        }
+        
+        .password-strength {
+            height: 4px;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        
+        .strength-weak { background-color: #ef4444; width: 33%; }
+        .strength-medium { background-color: #f59e0b; width: 66%; }
+        .strength-strong { background-color: #00A86B; width: 100%; }
+    </style>
+</head>
+<body class="min-h-full bg-gray-50 font-sans">
+    <!-- Header -->
+    <div class="gradient-bg text-white py-12">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h1 class="text-4xl font-bold mb-4">💚 Register Now — Join the LifeLink Community</h1>
+            <p class="text-xl mb-2">Sign up to take part in the organ donation movement.</p>
+            <p class="text-lg opacity-90">Whether you want to become a donor, register as a recipient, or partner as a hospital, your registration helps save lives and spread hope. 💚</p>
+            <p class="text-lg mt-4 font-medium">✨ It takes just a few minutes, but the impact lasts a lifetime.</p>
+        </div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="max-w-2xl mx-auto px-6 -mt-6 relative z-10">
+        <div class="bg-white rounded-full p-1 shadow-lg">
+            <div class="flex justify-between text-sm font-medium text-gray-600 mb-2 px-4">
+                <span id="step1-label" class="text-green-600">Personal</span>
+                <span id="step2-label">Details</span>
+                <span id="step3-label">Consent</span>
+            </div>
+            <div class="bg-gray-200 rounded-full h-2">
+                <div id="progress-bar" class="progress-bar bg-green-500 h-2 rounded-full" style="width: 33%"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Form -->
+    <div class="max-w-2xl mx-auto px-6 py-8">
+        <div class="bg-white rounded-2xl shadow-xl p-8">
+            <form id="registrationForm">
+                <!-- Step 1: Account Type & Personal Details -->
+                <div id="step1" class="fade-in">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">Account Type & Personal Information</h2>
+                    
+                    <!-- Account Type Selection -->
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-3">Account Type</label>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <label class="cursor-pointer">
+                                <input type="radio" name="accountType" value="donor" class="sr-only" required>
+                                <div class="account-type-card border-2 border-gray-200 rounded-xl p-4 text-center hover:border-green-500 hover-scale transition-all">
+                                    <div class="text-2xl mb-2">❤️</div>
+                                    <div class="font-medium">Donor</div>
+                                </div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="radio" name="accountType" value="recipient" class="sr-only" required>
+                                <div class="account-type-card border-2 border-gray-200 rounded-xl p-4 text-center hover:border-green-500 hover-scale transition-all">
+                                    <div class="text-2xl mb-2">🙏</div>
+                                    <div class="font-medium">Recipient</div>
+                                </div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="radio" name="accountType" value="hospital" class="sr-only" required>
+                                <div class="account-type-card border-2 border-gray-200 rounded-xl p-4 text-center hover:border-green-500 hover-scale transition-all">
+                                    <div class="text-2xl mb-2">🏥</div>
+                                    <div class="font-medium">Hospital Partner</div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Personal Details -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                            <input type="text" name="fullName" required class="w-full px-4 py-3 border border-gray-300 rounded-xl input-focus transition-all" placeholder="Enter your full name">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                            <input type="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-xl input-focus transition-all" placeholder="your.email@example.com">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Contact Number</label>
+                            <input type="tel" name="phone" required class="w-full px-4 py-3 border border-gray-300 rounded-xl input-focus transition-all" placeholder="+1 (555) 123-4567">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Date of Birth</label>
+                            <input type="date" name="dob" required class="w-full px-4 py-3 border border-gray-300 rounded-xl input-focus transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                            <input type="password" name="password" id="password" required class="w-full px-4 py-3 border border-gray-300 rounded-xl input-focus transition-all" placeholder="Create a strong password">
+                            <div class="mt-2">
+                                <div class="password-strength bg-gray-200" id="passwordStrength"></div>
+                                <div class="text-xs text-gray-500 mt-1" id="passwordText">Password strength</div>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Confirm Password</label>
+                            <input type="password" name="confirmPassword" required class="w-full px-4 py-3 border border-gray-300 rounded-xl input-focus transition-all" placeholder="Confirm your password">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Gender (Optional)</label>
+                            <select name="gender" class="w-full px-4 py-3 border border-gray-300 rounded-xl input-focus transition-all">
+                                <option value="">Select gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                                <option value="prefer-not-to-say">Prefer not to say</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-end mt-8">
+                        <button type="button" id="nextStep1" class="gradient-bg text-white px-8 py-3 rounded-xl font-medium hover-scale transition-all shadow-lg">
+                            Next Step →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Medical/Organizational Details -->
+                <div id="step2" class="hidden">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">Additional Details</h2>
+                    
+                    <!-- Dynamic content based on account type -->
+                    <div id="donorDetails" class="hidden">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Blood Group</label>
+                                <select name="bloodGroup" class="w-full px-4 py-3 border border-gray-300 rounded-xl input-focus transition-all">
+                                    <option value="">Select blood group</option>
+                                    <option value="A+">A+</option>
+                                    <option value="A-">A-</option>
+                                    <option value="B+">B+</option>
+                                    <option value="B-">B-</option>
+                                    <option value="AB+">AB+</option>
+                                    <option value="AB-">AB-</option>
+                                    <option value="O+">O+</option>
+                                    <option value="O-">O-</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Upload ID Proof</label>
+                                <input type="file" name="idProof" accept=".pdf,.jpg,.jpeg,.png" class="w-full px-4 py-3 border border-gray-300 rounded-xl input-focus transition-all">
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                            <label class="block text-sm font-medium text-gray-700 mb-3">Organs willing to donate</label>
+                            <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                                <label class="flex items-center space-x-2 cursor-pointer">
+                                    <input type="checkbox" name="organs" value="heart" class="rounded text-green-600">
+                                    <span>❤️ Heart</span>
+                                </label>
+                                <label class="flex items-center space-x-2 cursor-pointer">
+                                    <input type="checkbox" name="organs" value="kidney" class="rounded text-green-600">
+                                    <span>🫘 Kidney</span>
+                                </label>
+                                <label class="flex items-center space-x-2 cursor-pointer">
+                                    <input type="checkbox" name="organs" value="liver" class="rounded text-green-600">
+                                    <span>🫀 Liver</span>
+                                </label>
+                                <label class="flex items-center space-x-2 cursor-pointer">
+                                    <input type="checkbox" name="organs" value="lungs" class="rounded text-green-600">
+                                    <span>🫁 Lungs</span>
+                                </label>
+                                <label class="flex items-center space-x-2 cursor-pointer">
+                                    <input type="checkbox" name="organs" value="eyes" class="rounded text-green-600">
+                                    <span>👁️ Eyes</span>
+                                </label>
+                                <label class="flex items-center space-x-2 cursor-pointer">
+                                    <input type="checkbox" name="organs" value="pancreas" class="rounded text-green-600">
+                                    <span>🥞 Pancreas</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Upload Medical Report (Optional)</label>
+                            <input type="file" name="medicalReport" accept=".pdf,.jpg,.jpeg,.png" class="w-full px-4 py-3 border border-gray-300 rounded-xl input-focus transition-all">
+                        </div>
+                    </div>
+
+                    <div id="recipientDetails" class="hidden">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Blood Group</label>
+                                <select name="bloodGroup" class="w-full px-4 py-3 border border-gray-300 rounded-xl input-focus transition-all">
+                                    <option value="">Select blood group</option>
+                                    <option value="A+">A+</option>
+                                    <option value="A-">A-</option>
+                                    <option value="B+">B+</option>
+                                    <option value="B-">B-</option>
+                                    <option value="AB+">AB+</option>
+                                    <option value="AB-">AB-</option>
+                                    <option value="O+">O+</option>
+                                    <option value="O-">O-</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Required Organ</label>
+                                <select name="requiredOrgan" class="w-full px-4 py-3 border border-gray-300 rounded-xl input-focus transition-all">
+                                    <option value="">Select required organ</option>
+                                    <option value="heart">❤️ Heart</option>
+                                    <option value="kidney">🫘 Kidney</option>
+                                    <option value="liver">🫀 Liver</option>
+                                    <option value="lungs">🫁 Lungs</option>
+                                    <option value="eyes">👁️ Eyes</option>
+                                    <option value="pancreas">🥞 Pancreas</option>
+                                </select>
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Treating Hospital Name & Contact</label>
+                                <input type="text" name="treatingHospital" class="w-full px-4 py-3 border border-gray-300 rounded-xl input-focus transition-all" placeholder="Hospital name and contact information">
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Medical Condition / Report Upload</label>
+                                <input type="file" name="medicalCondition" accept=".pdf,.jpg,.jpeg,.png" class="w-full px-4 py-3 border border-gray-300 rounded-xl input-focus transition-all">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="hospitalDetails" class="hidden">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Hospital Name</label>
+                                <input type="text" name="hospitalName" class="w-full px-4 py-3 border border-gray-300 rounded-xl input-focus transition-all" placeholder="Enter hospital name">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Location (City, State)</label>
+                                <input type="text" name="location" class="w-full px-4 py-3 border border-gray-300 rounded-xl input-focus transition-all" placeholder="City, State">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Contact Person</label>
+                                <input type="text" name="contactPerson" class="w-full px-4 py-3 border border-gray-300 rounded-xl input-focus transition-all" placeholder="Contact person name">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Contact Number & Email</label>
+                                <input type="text" name="hospitalContact" class="w-full px-4 py-3 border border-gray-300 rounded-xl input-focus transition-all" placeholder="Phone & email">
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Upload Hospital License / Verification</label>
+                                <input type="file" name="hospitalLicense" accept=".pdf,.jpg,.jpeg,.png" class="w-full px-4 py-3 border border-gray-300 rounded-xl input-focus transition-all">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between mt-8">
+                        <button type="button" id="backStep1" class="border border-gray-300 text-gray-700 px-8 py-3 rounded-xl font-medium hover-scale transition-all">
+                            ← Back
+                        </button>
+                        <button type="button" id="nextStep2" class="gradient-bg text-white px-8 py-3 rounded-xl font-medium hover-scale transition-all shadow-lg">
+                            Next Step →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Consent & Terms -->
+                <div id="step3" class="hidden">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">Consent & Terms</h2>
+                    
+                    <div class="space-y-4">
+                        <label class="flex items-start space-x-3 cursor-pointer">
+                            <input type="checkbox" name="termsConsent" required class="mt-1 rounded text-green-600">
+                            <span class="text-gray-700">I agree to the <a href="#" class="text-green-600 hover:underline">Terms & Conditions</a> and <a href="#" class="text-green-600 hover:underline">Privacy Policy</a>.</span>
+                        </label>
+                        <label class="flex items-start space-x-3 cursor-pointer">
+                            <input type="checkbox" name="dataConsent" required class="mt-1 rounded text-green-600">
+                            <span class="text-gray-700">I consent to share my medical/organizational information for organ donation purposes.</span>
+                        </label>
+                    </div>
+
+                    <div class="flex justify-between mt-8">
+                        <button type="button" id="backStep2" class="border border-gray-300 text-gray-700 px-8 py-3 rounded-xl font-medium hover-scale transition-all">
+                            ← Back
+                        </button>
+                        <button type="submit" class="gradient-bg text-white px-8 py-3 rounded-xl font-medium hover-scale transition-all shadow-lg text-lg">
+                            💚 Register Now
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmationModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-2xl p-8 max-w-md mx-4 text-center">
+            <div class="text-6xl mb-4">🎉</div>
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">Thank you for registering!</h3>
+            <p class="text-gray-600 mb-6">Please verify your email to activate your account. Check your inbox for a verification link.</p>
+            <button onclick="closeModal()" class="gradient-bg text-white px-6 py-3 rounded-xl font-medium hover-scale transition-all">
+                Got it!
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="flex justify-center space-x-8 mb-4">
+                <a href="#" class="hover:text-green-400 transition-colors">Login</a>
+                <a href="#" class="hover:text-green-400 transition-colors">Terms & Conditions</a>
+                <a href="#" class="hover:text-green-400 transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-green-400 transition-colors">Contact Support</a>
+            </div>
+            <p class="text-gray-400">© 2024 LifeLink Community. Saving lives, spreading hope.</p>
+        </div>
+    </footer>
+
+    <script>
+        let currentStep = 1;
+        
+        // Account type selection
+        document.querySelectorAll('input[name="accountType"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                // Update visual selection
+                document.querySelectorAll('.account-type-card').forEach(card => {
+                    card.classList.remove('border-green-500', 'bg-green-50');
+                    card.classList.add('border-gray-200');
+                });
+                
+                this.parentElement.querySelector('.account-type-card').classList.remove('border-gray-200');
+                this.parentElement.querySelector('.account-type-card').classList.add('border-green-500', 'bg-green-50');
+            });
+        });
+
+        // Password strength checker
+        document.getElementById('password').addEventListener('input', function() {
+            const password = this.value;
+            const strengthBar = document.getElementById('passwordStrength');
+            const strengthText = document.getElementById('passwordText');
+            
+            let strength = 0;
+            if (password.length >= 8) strength++;
+            if (/[A-Z]/.test(password)) strength++;
+            if (/[0-9]/.test(password)) strength++;
+            if (/[^A-Za-z0-9]/.test(password)) strength++;
+            
+            strengthBar.className = 'password-strength bg-gray-200';
+            if (strength >= 2) {
+                strengthBar.classList.add('strength-weak');
+                strengthText.textContent = 'Weak password';
+            }
+            if (strength >= 3) {
+                strengthBar.classList.remove('strength-weak');
+                strengthBar.classList.add('strength-medium');
+                strengthText.textContent = 'Medium strength';
+            }
+            if (strength >= 4) {
+                strengthBar.classList.remove('strength-medium');
+                strengthBar.classList.add('strength-strong');
+                strengthText.textContent = 'Strong password';
+            }
+        });
+
+        // Step navigation
+        document.getElementById('nextStep1').addEventListener('click', function() {
+            if (validateStep1()) {
+                showStep(2);
+                updateDynamicFields();
+            }
+        });
+
+        document.getElementById('nextStep2').addEventListener('click', function() {
+            if (validateStep2()) {
+                showStep(3);
+            }
+        });
+
+        document.getElementById('backStep1').addEventListener('click', function() {
+            showStep(1);
+        });
+
+        document.getElementById('backStep2').addEventListener('click', function() {
+            showStep(2);
+        });
+
+        function showStep(step) {
+            // Hide all steps
+            document.getElementById('step1').classList.add('hidden');
+            document.getElementById('step2').classList.add('hidden');
+            document.getElementById('step3').classList.add('hidden');
+            
+            // Show current step
+            document.getElementById('step' + step).classList.remove('hidden');
+            document.getElementById('step' + step).classList.add('fade-in');
+            
+            // Update progress bar
+            const progressBar = document.getElementById('progress-bar');
+            const stepLabels = ['step1-label', 'step2-label', 'step3-label'];
+            
+            stepLabels.forEach((label, index) => {
+                const element = document.getElementById(label);
+                if (index < step) {
+                    element.classList.add('text-green-600');
+                    element.classList.remove('text-gray-600');
+                } else {
+                    element.classList.remove('text-green-600');
+                    element.classList.add('text-gray-600');
+                }
+            });
+            
+            progressBar.style.width = (step * 33.33) + '%';
+            currentStep = step;
+        }
+
+        function updateDynamicFields() {
+            const accountType = document.querySelector('input[name="accountType"]:checked').value;
+            
+            // Hide all detail sections
+            document.getElementById('donorDetails').classList.add('hidden');
+            document.getElementById('recipientDetails').classList.add('hidden');
+            document.getElementById('hospitalDetails').classList.add('hidden');
+            
+            // Show relevant section
+            document.getElementById(accountType + 'Details').classList.remove('hidden');
+        }
+
+        function validateStep1() {
+            const requiredFields = ['accountType', 'fullName', 'email', 'phone', 'password', 'confirmPassword', 'dob'];
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                const input = document.querySelector(`[name="${field}"]`);
+                if (field === 'accountType') {
+                    if (!document.querySelector('input[name="accountType"]:checked')) {
+                        isValid = false;
+                        alert('Please select an account type.');
+                    }
+                } else if (!input.value.trim()) {
+                    isValid = false;
+                    input.classList.add('border-red-500');
+                } else {
+                    input.classList.remove('border-red-500');
+                }
+            });
+            
+            // Check password match
+            const password = document.querySelector('[name="password"]').value;
+            const confirmPassword = document.querySelector('[name="confirmPassword"]').value;
+            if (password !== confirmPassword) {
+                isValid = false;
+                alert('Passwords do not match.');
+            }
+            
+            return isValid;
+        }
+
+        function validateStep2() {
+            const accountType = document.querySelector('input[name="accountType"]:checked').value;
+            let isValid = true;
+            
+            if (accountType === 'donor') {
+                const bloodGroup = document.querySelector('[name="bloodGroup"]');
+                const organs = document.querySelectorAll('[name="organs"]:checked');
+                if (!bloodGroup.value) {
+                    isValid = false;
+                    bloodGroup.classList.add('border-red-500');
+                }
+                if (organs.length === 0) {
+                    isValid = false;
+                    alert('Please select at least one organ to donate.');
+                }
+            } else if (accountType === 'recipient') {
+                const requiredFields = ['bloodGroup', 'requiredOrgan', 'treatingHospital'];
+                requiredFields.forEach(field => {
+                    const input = document.querySelector(`[name="${field}"]`);
+                    if (!input.value.trim()) {
+                        isValid = false;
+                        input.classList.add('border-red-500');
+                    }
+                });
+            } else if (accountType === 'hospital') {
+                const requiredFields = ['hospitalName', 'location', 'contactPerson', 'hospitalContact'];
+                requiredFields.forEach(field => {
+                    const input = document.querySelector(`[name="${field}"]`);
+                    if (!input.value.trim()) {
+                        isValid = false;
+                        input.classList.add('border-red-500');
+                    }
+                });
+            }
+            
+            return isValid;
+        }
+
+        // Form submission
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Check consent checkboxes
+            const termsConsent = document.querySelector('[name="termsConsent"]').checked;
+            const dataConsent = document.querySelector('[name="dataConsent"]').checked;
+            
+            if (!termsConsent || !dataConsent) {
+                alert('Please accept both consent agreements to proceed.');
+                return;
+            }
+            
+            // Show confirmation modal
+            document.getElementById('confirmationModal').classList.remove('hidden');
+        });
+
+        function closeModal() {
+            document.getElementById('confirmationModal').classList.add('hidden');
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98d77d8867bb8adf',t:'MTc2MDI4MTQ3My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

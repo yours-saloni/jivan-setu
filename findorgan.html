@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find an Organ — Give Hope, Find Life</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            box-sizing: border-box;
+            background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+        }
+        .gradient-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+        }
+        .organ-card {
+            transition: all 0.3s ease;
+        }
+        .organ-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .progress-bar {
+            background: linear-gradient(90deg, #00A86B 0%, #66CDAA 100%);
+        }
+        .chatbot {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        .chatbot-bubble {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .step-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+            border: 2px solid #e5f3e8;
+        }
+    </style>
+</head>
+<body class="min-h-full">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-green-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="text-3xl">🫀</div>
+                    <h1 class="text-3xl font-bold text-gray-900">Find an Organ</h1>
+                </div>
+                <div class="text-sm text-gray-600">Give Hope, Find Life</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-12">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-bold text-gray-900 mb-6">Looking for a life-saving organ?</h2>
+            <p class="text-xl text-gray-700 mb-4">Use our smart search tool to find available organs based on your blood group, organ type, and location.</p>
+            <p class="text-lg text-gray-600 mb-2">We connect recipients with verified donors and registered hospitals through a transparent and secure process.</p>
+            <p class="text-lg text-green-600 font-semibold">✨ Because every match brings a second chance at life.</p>
+        </div>
+    </section>
+
+    <!-- Search & Filter Section -->
+    <section class="py-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="gradient-card rounded-2xl shadow-lg p-8">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                    <span class="text-2xl mr-3">🔍</span>
+                    Search for an Available Organ
+                </h3>
+                
+                <form id="searchForm" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Organ Type</label>
+                        <select id="organType" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                            <option value="">Select organ type</option>
+                            <option value="heart">Heart</option>
+                            <option value="kidney">Kidney</option>
+                            <option value="liver">Liver</option>
+                            <option value="lungs">Lungs</option>
+                            <option value="eyes">Eyes</option>
+                            <option value="pancreas">Pancreas</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Blood Group</label>
+                        <select id="bloodGroup" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                            <option value="">Select blood group</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">City / State</label>
+                        <input type="text" id="location" placeholder="Enter city or state" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Urgency Level</label>
+                        <select id="urgency" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                            <option value="">Select urgency</option>
+                            <option value="critical">Critical</option>
+                            <option value="moderate">Moderate</option>
+                            <option value="normal">Normal</option>
+                        </select>
+                    </div>
+                    
+                    <div class="lg:col-span-4 flex justify-center">
+                        <button type="submit" class="bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-200 flex items-center space-x-2">
+                            <span>💚</span>
+                            <span>Find Matches</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="resultsSection" class="py-8 hidden">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                <span class="text-2xl mr-3">📋</span>
+                Available Organs Near You
+            </h3>
+            
+            <div id="resultsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Results will be populated here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Organ Availability Summary -->
+    <section class="py-12">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="gradient-card rounded-2xl shadow-lg p-8">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                    <span class="text-2xl mr-3">📊</span>
+                    Current Organ Availability Status
+                </h3>
+                <p class="text-gray-600 mb-6">Auto-updated availability across India</p>
+                
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="font-medium text-gray-700">Kidney</span>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-32 bg-gray-200 rounded-full h-3">
+                                <div class="progress-bar h-3 rounded-full" style="width: 70%"></div>
+                            </div>
+                            <span class="text-sm font-semibold text-green-600">70%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center justify-between">
+                        <span class="font-medium text-gray-700">Heart</span>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-32 bg-gray-200 rounded-full h-3">
+                                <div class="progress-bar h-3 rounded-full" style="width: 30%"></div>
+                            </div>
+                            <span class="text-sm font-semibold text-green-600">30%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center justify-between">
+                        <span class="font-medium text-gray-700">Liver</span>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-32 bg-gray-200 rounded-full h-3">
+                                <div class="progress-bar h-3 rounded-full" style="width: 50%"></div>
+                            </div>
+                            <span class="text-sm font-semibold text-green-600">50%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center justify-between">
+                        <span class="font-medium text-gray-700">Lungs</span>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-32 bg-gray-200 rounded-full h-3">
+                                <div class="progress-bar h-3 rounded-full" style="width: 25%"></div>
+                            </div>
+                            <span class="text-sm font-semibold text-green-600">25%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Match Suggestion -->
+    <section class="py-8">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-blue-50 border border-blue-200 rounded-2xl p-8 text-center">
+                <h3 class="text-2xl font-bold text-gray-900 mb-4 flex items-center justify-center">
+                    <span class="text-2xl mr-3">🧠</span>
+                    AI-Powered Match Suggestions
+                </h3>
+                <p class="text-lg text-gray-700 mb-6">We've found 2 compatible donors based on your medical profile.</p>
+                <button class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-200">
+                    View Suggested Matches
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partner Hospitals -->
+    <section class="py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 class="text-2xl font-bold text-gray-900 mb-8 flex items-center">
+                <span class="text-2xl mr-3">🏥</span>
+                Partner Hospitals You Can Contact
+            </h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="gradient-card rounded-xl shadow-lg p-6 text-center">
+                    <div class="text-4xl mb-4">🏥</div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-2">Fortis Healthcare</h4>
+                    <p class="text-gray-600 mb-4">Bengaluru</p>
+                    <div class="space-y-2">
+                        <button class="w-full bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg transition-colors duration-200">
+                            📞 Call
+                        </button>
+                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition-colors duration-200">
+                            📧 Mail
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="gradient-card rounded-xl shadow-lg p-6 text-center">
+                    <div class="text-4xl mb-4">🏥</div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-2">Apollo Hospitals</h4>
+                    <p class="text-gray-600 mb-4">Chennai</p>
+                    <div class="space-y-2">
+                        <button class="w-full bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg transition-colors duration-200">
+                            📞 Call
+                        </button>
+                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition-colors duration-200">
+                            📧 Mail
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="gradient-card rounded-xl shadow-lg p-6 text-center">
+                    <div class="text-4xl mb-4">🏥</div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-2">AIIMS</h4>
+                    <p class="text-gray-600 mb-4">Delhi</p>
+                    <div class="space-y-2">
+                        <button class="w-full bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg transition-colors duration-200">
+                            📞 Call
+                        </button>
+                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition-colors duration-200">
+                            📧 Mail
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Steps -->
+    <section class="py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">
+                <span class="text-2xl mr-3">⚙️</span>
+                How the Organ Matching Process Works
+            </h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+                <div class="step-card rounded-xl p-6 text-center">
+                    <div class="text-3xl mb-4">1️⃣</div>
+                    <h4 class="font-bold text-gray-900 mb-2">Register</h4>
+                    <p class="text-sm text-gray-600">Create your account or log in</p>
+                </div>
+                
+                <div class="step-card rounded-xl p-6 text-center">
+                    <div class="text-3xl mb-4">2️⃣</div>
+                    <h4 class="font-bold text-gray-900 mb-2">Medical Profile</h4>
+                    <p class="text-sm text-gray-600">Fill your medical information</p>
+                </div>
+                
+                <div class="step-card rounded-xl p-6 text-center">
+                    <div class="text-3xl mb-4">3️⃣</div>
+                    <h4 class="font-bold text-gray-900 mb-2">Search</h4>
+                    <p class="text-sm text-gray-600">Search for organ type</p>
+                </div>
+                
+                <div class="step-card rounded-xl p-6 text-center">
+                    <div class="text-3xl mb-4">4️⃣</div>
+                    <h4 class="font-bold text-gray-900 mb-2">Get Matched</h4>
+                    <p class="text-sm text-gray-600">System finds compatible donors</p>
+                </div>
+                
+                <div class="step-card rounded-xl p-6 text-center">
+                    <div class="text-3xl mb-4">5️⃣</div>
+                    <h4 class="font-bold text-gray-900 mb-2">Connect</h4>
+                    <p class="text-sm text-gray-600">Connect with hospital</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chatbot -->
+    <div class="chatbot">
+        <div id="chatbotBubble" class="chatbot-bubble bg-green-600 hover:bg-green-700 text-white p-4 rounded-full shadow-lg cursor-pointer transition-colors duration-200">
+            <div class="text-2xl">💬</div>
+        </div>
+        
+        <div id="chatbotWindow" class="hidden bg-white rounded-2xl shadow-2xl w-80 h-96 mb-4 border border-gray-200">
+            <div class="bg-green-600 text-white p-4 rounded-t-2xl">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-2">
+                        <div class="text-xl">🤖</div>
+                        <span class="font-semibold">Lina - LifeLink Assistant</span>
+                    </div>
+                    <button id="closeChatbot" class="text-white hover:text-gray-200">✕</button>
+                </div>
+            </div>
+            
+            <div class="p-4 h-64 overflow-y-auto">
+                <div class="space-y-3">
+                    <div class="bg-gray-100 rounded-lg p-3">
+                        <p class="text-sm">👋 Hi! Want help finding a matching donor?</p>
+                    </div>
+                    <div class="bg-gray-100 rounded-lg p-3">
+                        <p class="text-sm">💚 I can filter results based on your blood group or hospital preference.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="p-4 border-t border-gray-200">
+                <div class="space-y-2">
+                    <button class="w-full text-left bg-green-50 hover:bg-green-100 text-green-700 p-2 rounded-lg text-sm transition-colors duration-200">
+                        Find Kidney Donors
+                    </button>
+                    <button class="w-full text-left bg-green-50 hover:bg-green-100 text-green-700 p-2 rounded-lg text-sm transition-colors duration-200">
+                        Show Hospitals in Pune
+                    </button>
+                    <button class="w-full text-left bg-green-50 hover:bg-green-100 text-green-700 p-2 rounded-lg text-sm transition-colors duration-200">
+                        Notify me for new matches
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample organ data
+        const sampleOrgans = [
+            {
+                id: 'DK2573',
+                organ: 'Kidney',
+                bloodGroup: 'B+',
+                location: 'Apollo Hospital, Chennai',
+                addedOn: '11 Oct 2025',
+                status: 'Available'
+            },
+            {
+                id: 'DH1847',
+                organ: 'Heart',
+                bloodGroup: 'O+',
+                location: 'Fortis Hospital, Bengaluru',
+                addedOn: '10 Oct 2025',
+                status: 'Available'
+            },
+            {
+                id: 'DL3921',
+                organ: 'Liver',
+                bloodGroup: 'A+',
+                location: 'AIIMS, Delhi',
+                addedOn: '09 Oct 2025',
+                status: 'In Testing'
+            },
+            {
+                id: 'DK4156',
+                organ: 'Kidney',
+                bloodGroup: 'AB+',
+                location: 'Max Hospital, Mumbai',
+                addedOn: '08 Oct 2025',
+                status: 'Available'
+            }
+        ];
+
+        // Search form functionality
+        document.getElementById('searchForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const organType = document.getElementById('organType').value;
+            const bloodGroup = document.getElementById('bloodGroup').value;
+            const location = document.getElementById('location').value;
+            const urgency = document.getElementById('urgency').value;
+            
+            // Filter results based on search criteria
+            let filteredResults = sampleOrgans;
+            
+            if (organType) {
+                filteredResults = filteredResults.filter(organ => 
+                    organ.organ.toLowerCase().includes(organType.toLowerCase())
+                );
+            }
+            
+            if (bloodGroup) {
+                filteredResults = filteredResults.filter(organ => 
+                    organ.bloodGroup === bloodGroup
+                );
+            }
+            
+            if (location) {
+                filteredResults = filteredResults.filter(organ => 
+                    organ.location.toLowerCase().includes(location.toLowerCase())
+                );
+            }
+            
+            displayResults(filteredResults);
+        });
+
+        function displayResults(results) {
+            const resultsSection = document.getElementById('resultsSection');
+            const resultsGrid = document.getElementById('resultsGrid');
+            
+            resultsSection.classList.remove('hidden');
+            resultsGrid.innerHTML = '';
+            
+            if (results.length === 0) {
+                resultsGrid.innerHTML = `
+                    <div class="col-span-full text-center py-12">
+                        <div class="text-6xl mb-4">🔍</div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">No matches found</h3>
+                        <p class="text-gray-600">Try adjusting your search criteria or set up notifications for new matches.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            results.forEach(organ => {
+                const statusColor = organ.status === 'Available' ? 'text-green-600' : 
+                                  organ.status === 'In Testing' ? 'text-yellow-600' : 'text-red-600';
+                
+                const card = document.createElement('div');
+                card.className = 'organ-card gradient-card rounded-xl shadow-lg p-6';
+                card.innerHTML = `
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <h4 class="text-lg font-bold text-gray-900">🧬 ${organ.organ}</h4>
+                            <span class="text-sm font-semibold ${statusColor}">${organ.status}</span>
+                        </div>
+                        
+                        <div class="space-y-2 text-sm">
+                            <div class="flex items-center space-x-2">
+                                <span>🩸</span>
+                                <span class="text-gray-700">Blood Group: <strong>${organ.bloodGroup}</strong></span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span>📍</span>
+                                <span class="text-gray-700">${organ.location}</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span>⏰</span>
+                                <span class="text-gray-700">Added: ${organ.addedOn}</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span>🏥</span>
+                                <span class="text-gray-700">ID: ${organ.id}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-2 pt-4">
+                            <button class="w-full bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg transition-colors duration-200 text-sm font-medium">
+                                💌 Request Organ
+                            </button>
+                            <div class="grid grid-cols-2 gap-2">
+                                <button class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-3 rounded-lg transition-colors duration-200 text-xs">
+                                    🏥 Hospital Details
+                                </button>
+                                <button class="bg-gray-600 hover:bg-gray-700 text-white py-2 px-3 rounded-lg transition-colors duration-200 text-xs">
+                                    🔔 Notify Me
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                resultsGrid.appendChild(card);
+            });
+            
+            // Scroll to results
+            resultsSection.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Chatbot functionality
+        const chatbotBubble = document.getElementById('chatbotBubble');
+        const chatbotWindow = document.getElementById('chatbotWindow');
+        const closeChatbot = document.getElementById('closeChatbot');
+
+        chatbotBubble.addEventListener('click', function() {
+            chatbotWindow.classList.toggle('hidden');
+        });
+
+        closeChatbot.addEventListener('click', function() {
+            chatbotWindow.classList.add('hidden');
+        });
+
+        // Quick action buttons in chatbot
+        document.querySelectorAll('#chatbotWindow button').forEach(button => {
+            if (button.id !== 'closeChatbot') {
+                button.addEventListener('click', function() {
+                    const action = this.textContent.trim();
+                    if (action.includes('Kidney')) {
+                        document.getElementById('organType').value = 'kidney';
+                        document.getElementById('searchForm').dispatchEvent(new Event('submit'));
+                    } else if (action.includes('Pune')) {
+                        document.getElementById('location').value = 'Pune';
+                        document.getElementById('searchForm').dispatchEvent(new Event('submit'));
+                    }
+                    chatbotWindow.classList.add('hidden');
+                });
+            }
+        });
+
+        // Hospital contact buttons
+        document.querySelectorAll('button').forEach(button => {
+            if (button.textContent.includes('📞 Call')) {
+                button.addEventListener('click', function() {
+                    alert('Calling hospital... This would connect to the hospital\'s emergency organ transplant line.');
+                });
+            } else if (button.textContent.includes('📧 Mail')) {
+                button.addEventListener('click', function() {
+                    alert('Opening email client... This would compose an urgent organ request email.');
+                });
+            }
+        });
+
+        // AI Match Suggestions
+        document.querySelector('button:contains("View Suggested Matches")') && 
+        document.querySelector('button').addEventListener('click', function() {
+            if (this.textContent.includes('View Suggested Matches')) {
+                alert('AI has analyzed your medical profile and found compatible matches. This feature would show personalized recommendations.');
+            }
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98d7256d510e59ee',t:'MTc2MDI3Nzg2NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

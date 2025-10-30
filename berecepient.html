@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Become a Recipient - LifeLink Organ Transplant Registry</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #ffffff 0%, #eff6ff 30%, #fdf2f8 70%, #fce7f3 100%);
+        }
+        
+        .heart-pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .form-section {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 179, 122, 0.1);
+        }
+        
+        .success-animation {
+            animation: slideInUp 0.6s ease-out;
+        }
+        
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .input-focus:focus {
+            border-color: #00B37A;
+            box-shadow: 0 0 0 3px rgba(0, 179, 122, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-green-50 to-emerald-50 min-h-full">
+   <!-- Header / Navigation -->
+  <header class="bg-white/90 backdrop-blur-sm shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="bg-red-500 p-3 rounded-full heartbeat">
+                        <span class="text-white text-2xl">❤️</span>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">JivanSetu</h1>
+                        <p class="text-sm text-gray-600">SaveLife</p>
+                    </div>
+                </div>
+     <!-- Navigation -->
+<nav class="hidden lg:flex space-x-8">
+  <a href="index.html" class="text-gray-700 hover:text-red-500 transition-colors font-medium">Home</a>
+  <a href="aboutus.html" class="text-gray-700 hover:text-red-500 transition-colors font-medium">About Us</a>
+  <a href="becomedonor.html" class="text-gray-700 hover:text-red-500 transition-colors font-medium">Become a Donor</a>
+  <a href="berecepient.html" class="text-gray-700 hover:text-red-500 transition-colors font-medium">Find a Recipient</a>
+  <a href="hospital.html" class="text-gray-700 hover:text-red-500 transition-colors font-medium">Hospitals</a>
+<a href="reports.html" class="text-gray-700 hover:text-red-500 transition-colors font-medium">Reports</a>
+  <a href="contact.html" class="text-gray-700 hover:text-red-500 transition-colors font-medium">Contact</a></nav>
+  <!-- Profile Icon -->
+               <div class="relative">
+    <button onclick="toggleProfileMenu()" class="flex items-center space-x-2 bg-green-100 hover:bg-green-200 p-3 rounded-full transition-colors relative">
+        <span class="text-2xl">👤</span>
+        <div class="notification-badge bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center absolute -top-1 -right-1">3</div>
+    </button>
+    <div id="profileMenu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-2 z-50">
+        <a href="login.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">🔐 Login/Register</a>
+        <a href="profile.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">👤 My Profile</a>
+        <a href="setting.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">⚙️ Settings</a>
+        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">🚪 Logout</a>
+    </div>
+</div>
+            </div>
+        </div>
+    </header>
+
+<body class="gradient-bg min-h-full font-sans">
+    <div class="min-h-full">
+        <!-- Header Banner -->
+        <div class="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white py-12">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <div class="heart-pulse text-6xl mb-4">💚</div>
+                <h1 class="text-4xl font-bold mb-4">Become a Recipient — Register for an Organ Transplant</h1>
+                <p class="text-xl mb-2 opacity-90">Every life deserves a second chance.</p>
+                <p class="text-lg opacity-80">If you or your loved one needs an organ transplant, register here to connect with verified hospitals and donors through a transparent, safe, and fast process.</p>
+                <div class="mt-6 text-emerald-100">
+                    <p class="italic">✨ Our mission is to ensure no one loses hope while waiting for an organ.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Form Container -->
+        <div class="max-w-4xl mx-auto px-6 py-12">
+            <div id="registrationForm" class="space-y-8">
+                <!-- Personal Details Section -->
+                <div class="form-section rounded-2xl p-8 shadow-lg">
+                    <div class="flex items-center mb-6">
+                        <span class="text-3xl mr-3">🧍‍♀️</span>
+                        <h2 class="text-2xl font-bold text-gray-800">Personal Details</h2>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus transition-all" placeholder="Enter your full name" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Age *</label>
+                            <input type="number" class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus transition-all" placeholder="Age" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Gender *</label>
+                            <select class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus transition-all" required>
+                                <option value="">Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Blood Group *</label>
+                            <select class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus transition-all" required>
+                                <option value="">Select Blood Group</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Contact Number *</label>
+                            <input type="tel" class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus transition-all" placeholder="+91 XXXXX XXXXX" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+                            <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus transition-all" placeholder="your.email@example.com" required>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Address / City / State *</label>
+                            <textarea class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus transition-all" rows="3" placeholder="Complete address with city and state" required></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Medical Details Section -->
+                <div class="form-section rounded-2xl p-8 shadow-lg">
+                    <div class="flex items-center mb-6">
+                        <span class="text-3xl mr-3">🏥</span>
+                        <h2 class="text-2xl font-bold text-gray-800">Medical Information for Organ Request</h2>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Required Organ *</label>
+                            <select class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus transition-all" required>
+                                <option value="">Select Required Organ</option>
+                                <option value="heart">❤️ Heart</option>
+                                <option value="kidney">🫘 Kidney</option>
+                                <option value="liver">💛 Liver</option>
+                                <option value="lungs">🌬️ Lungs</option>
+                                <option value="eyes">👁️ Eyes</option>
+                                <option value="skin">🩹 Skin</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Current Treatment Hospital *</label>
+                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus transition-all" placeholder="Hospital name & city" required>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Medical Condition *</label>
+                            <textarea class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus transition-all" rows="4" placeholder="Please describe your medical condition and why you need an organ transplant" required></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Treating Doctor's Name & Contact</label>
+                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus transition-all" placeholder="Dr. Name, Contact Number">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Hospital Reference Code</label>
+                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus transition-all" placeholder="Optional reference code">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Upload Doctor's Prescription or Report</label>
+                            <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-emerald-400 transition-colors">
+                                <input type="file" id="medicalReport" class="hidden" accept=".pdf,.jpg,.jpeg,.png">
+                                <label for="medicalReport" class="cursor-pointer">
+                                    <div class="text-4xl mb-2">📄</div>
+                                    <p class="text-gray-600">Click to upload medical documents</p>
+                                    <p class="text-sm text-gray-500 mt-1">PDF, JPG, PNG files accepted</p>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Verification Section -->
+                <div class="form-section rounded-2xl p-8 shadow-lg">
+                    <div class="flex items-center mb-6">
+                        <span class="text-3xl mr-3">🔐</span>
+                        <h2 class="text-2xl font-bold text-gray-800">Verification</h2>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="md:col-span-2">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Upload ID Proof *</label>
+                            <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-emerald-400 transition-colors">
+                                <input type="file" id="idProof" class="hidden" accept=".pdf,.jpg,.jpeg,.png" required>
+                                <label for="idProof" class="cursor-pointer">
+                                    <div class="text-4xl mb-2">🆔</div>
+                                    <p class="text-gray-600">Upload Aadhaar, PAN, Passport, or other ID</p>
+                                    <p class="text-sm text-gray-500 mt-1">PDF, JPG, PNG files accepted</p>
+                                </label>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Emergency Contact Name *</label>
+                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus transition-all" placeholder="Emergency contact person" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Emergency Contact Phone *</label>
+                            <input type="tel" class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus transition-all" placeholder="+91 XXXXX XXXXX" required>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 space-y-4">
+                        <label class="flex items-start space-x-3">
+                            <input type="checkbox" class="mt-1 h-5 w-5 text-emerald-600 border-gray-300 rounded focus:ring-emerald-500" required>
+                            <span class="text-sm text-gray-700">I confirm that all the details provided are accurate and verified by a registered medical professional.</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Consent & Awareness Section -->
+                <div class="form-section rounded-2xl p-8 shadow-lg">
+                    <div class="flex items-center mb-6">
+                        <span class="text-3xl mr-3">📋</span>
+                        <h2 class="text-2xl font-bold text-gray-800">Consent & Awareness</h2>
+                    </div>
+                    
+                    <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-6 mb-6">
+                        <p class="text-gray-700 leading-relaxed">
+                            By submitting this form, I authorize LifeLink to share my medical compatibility details with verified hospitals and organ banks to find the best match. Your data remains encrypted and private.
+                        </p>
+                    </div>
+                    
+                    <label class="flex items-start space-x-3">
+                        <input type="checkbox" class="mt-1 h-5 w-5 text-emerald-600 border-gray-300 rounded focus:ring-emerald-500" required>
+                        <span class="text-sm text-gray-700">I understand and agree to the terms of medical data use.</span>
+                    </label>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="text-center">
+                    <button onclick="submitRegistration()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 px-12 rounded-full text-lg transition-all transform hover:scale-105 shadow-lg">
+                        💚 Submit Registration
+                    </button>
+                    <p class="text-sm text-gray-600 mt-4">Hope begins here. Technology meets humanity.</p>
+                </div>
+            </div>
+
+            <!-- Success Screen (Hidden Initially) -->
+            <div id="successScreen" class="hidden text-center success-animation">
+                <div class="form-section rounded-2xl p-12 shadow-lg">
+                    <div class="text-6xl mb-6">🎉</div>
+                    <h2 class="text-3xl font-bold text-emerald-600 mb-4">Thank you for registering!</h2>
+                    <p class="text-lg text-gray-700 mb-6">Our medical partners will review your details and connect you when a compatible organ match is found.</p>
+                    
+                    <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-6 mb-8">
+                        <p class="text-sm text-gray-600 mb-2">Your Application ID:</p>
+                        <p class="text-2xl font-bold text-emerald-600" id="applicationId">LL-2024-001234</p>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <button onclick="trackStatus()" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg transition-all mr-4">
+                            📊 Track My Status
+                        </button>
+                        <button onclick="contactSupport()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 px-8 rounded-lg transition-all">
+                            📞 Contact Hospital Support
+                        </button>
+                    </div>
+                    
+                    <div class="mt-8 text-center">
+                        <p class="text-gray-600 italic">"Every registration brings us closer to saving a life."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="bg-gray-50 py-8 mt-12">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <div class="flex justify-center space-x-8 mb-4">
+                    <button onclick="checkAvailability()" class="text-emerald-600 hover:text-emerald-700 font-medium">🔍 Check Organ Availability</button>
+                    <button onclick="learnMore()" class="text-emerald-600 hover:text-emerald-700 font-medium">🧠 Learn About Transplant Process</button>
+                </div>
+                <p class="text-gray-600">LifeLink - Connecting Hope with Healing</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function submitRegistration() {
+            // Generate random application ID
+            const appId = 'LL-2024-' + Math.floor(Math.random() * 900000 + 100000);
+            document.getElementById('applicationId').textContent = appId;
+            
+            // Hide form and show success screen
+            document.getElementById('registrationForm').style.display = 'none';
+            document.getElementById('successScreen').classList.remove('hidden');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        function trackStatus() {
+            alert('🔄 Status tracking feature will redirect you to your personalized dashboard where you can monitor your application progress, view compatibility updates, and receive notifications about potential matches.');
+        }
+        
+        function contactSupport() {
+            alert('📞 Our 24/7 medical support team is here to help! You can reach us at:\n\n• Phone: 1800-LIFELINK\n• Email: support@lifelink.org\n• WhatsApp: +91-98765-43210\n\nWe typically respond within 2 hours.');
+        }
+        
+        function checkAvailability() {
+            alert('🔍 The organ availability checker will show you:\n\n• Current organ inventory by blood type\n• Average waiting times\n• Regional availability\n• Match probability based on your profile\n\nThis helps set realistic expectations for your transplant journey.');
+        }
+        
+        function learnMore() {
+            alert('🧠 Our education center covers:\n\n• Transplant process step-by-step\n• Pre and post-surgery care\n• Success stories from recipients\n• How to prepare for surgery\n• Support resources for families\n\nKnowledge empowers better health outcomes.');
+        }
+        
+        // File upload feedback
+        document.getElementById('medicalReport').addEventListener('change', function(e) {
+            if (e.target.files.length > 0) {
+                const label = e.target.nextElementSibling;
+                label.innerHTML = `
+                    <div class="text-4xl mb-2 text-emerald-600">✅</div>
+                    <p class="text-emerald-600 font-medium">${e.target.files[0].name}</p>
+                    <p class="text-sm text-gray-500 mt-1">File uploaded successfully</p>
+                `;
+            }
+        });
+        
+        document.getElementById('idProof').addEventListener('change', function(e) {
+            if (e.target.files.length > 0) {
+                const label = e.target.nextElementSibling;
+                label.innerHTML = `
+                    <div class="text-4xl mb-2 text-emerald-600">✅</div>
+                    <p class="text-emerald-600 font-medium">${e.target.files[0].name}</p>
+                    <p class="text-sm text-gray-500 mt-1">ID proof uploaded successfully</p>
+                `;
+            }
+        });
+         
+    // Animate counters
+    function animateCounter(element, target) {
+        let current = 0;
+        const increment = target / 100;
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                current = target;
+                clearInterval(timer);
+            }
+            element.textContent = Math.floor(current).toLocaleString();
+        }, 20);
+    }
+
+    // Toggle function for the profile menu
+    function toggleProfileMenu() {
+        const menu = document.getElementById('profileMenu');
+        if (menu) {
+            menu.classList.toggle('hidden');
+        }
+    }
+
+    // Optional: Close menu when clicking outside (improves UX)
+    document.addEventListener('click', function(event) {
+        const menu = document.getElementById('profileMenu');
+        const button = event.target.closest('button[onclick="toggleProfileMenu()"]');
+        if (menu && !menu.contains(event.target) && !button) {
+            menu.classList.add('hidden');
+        }
+    });
+
+    // Optional: Close menu on link clicks (if you want to navigate away)
+    document.querySelectorAll('#profileMenu a').forEach(link => {
+        link.addEventListener('click', function() {
+            const menu = document.getElementById('profileMenu');
+            menu.classList.add('hidden');
+            // Add your navigation logic here, e.g., window.location.href = this.href;
+        });
+    });
+
+    // Start counter animation when section is visible
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counters = entry.target.querySelectorAll('.counter');
+                counters.forEach(counter => {
+                    const target = parseInt(counter.textContent.replace(/,/g, ''));
+                    animateCounter(counter, target);
+                });
+                observer.unobserve(entry.target);
+            }
+        });
+    });
+
+    observer.observe(document.querySelector('.py-16.bg-white'));
+
+
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98d6dada90b0a5d3',t:'MTc2MDI3NDgxMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

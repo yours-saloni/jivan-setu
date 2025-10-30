@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile — Your Life. Your Legacy.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for icons and subtle enhancements */
+        .profile-pic {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(to right, #00A86B, #66CDAA);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            margin: 0 auto 1rem;
+        }
+        .status-green { color: #00A86B; font-weight: bold; }
+        .status-yellow { color: #FBBF24; font-weight: bold; }
+        .status-gray { color: #9CA3AF; font-weight: bold; }
+        .edit-btn { background: #00A86B; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; border: none; cursor: pointer; transition: background 0.3s; }
+        .edit-btn:hover { background: #008f5a; }
+        .edit-form { display: none; }
+        .edit-form input { width: 100%; padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 0.25rem; margin-bottom: 0.5rem; }
+        .save-btn { background: #10B981; color: white; padding: 0.5rem 1rem; border: none; border-radius: 0.5rem; cursor: pointer; margin-right: 0.5rem; }
+        .cancel-btn { background: #EF4444; color: white; padding: 0.5rem 1rem; border: none; border-radius: 0.5rem; cursor: pointer; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-green-600 to-teal-500 text-white py-8 text-center">
+        <div class="container mx-auto px-4">
+            <h1 class="text-3xl font-bold mb-2">My Profile — Your Life. Your Legacy.</h1>
+            <div class="profile-pic">👤</div>
+        </div>
+    </header>
+
+    <!-- Top Description -->
+    <section class="bg-white py-8 text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">🧠 Welcome to Your JivanSetu Profile</h2>
+            <p class="text-gray-600 mb-2">Welcome to your JivanSetu profile, your personal space to manage all your donation and recipient details. Here, you can update your information, check registration status, track organ donation pledges, and manage your hospital connections — all in one secure place.</p>
+            <p class="text-green-600 font-semibold">✨ Your compassion saves lives — thank you for being a part of JivanSetu.</p>
+        </div>
+    </section>
+
+    <div class="container mx-auto px-4 py-8">
+        <!-- 1. Personal Information -->
+        <div class="bg-white rounded-2xl shadow-md p-6 mb-6">
+            <h2 class="text-xl font-semibold text-gray-800 flex items-center gap-2 mb-4">
+                👤 Personal Information
+            </h2>
+            <div id="personalInfo" class="space-y-2">
+                <p><span class="font-medium">Full Name:</span> John Doe</p>
+                <p><span class="font-medium">Age / Gender:</span> 35 / Male</p>
+                <p><span class="font-medium">Blood Group:</span> O+</p>
+                <p><span class="font-medium">Contact Number:</span> +1-234-567-8900</p>
+                <p><span class="font-medium">Email Address:</span> john.doe@example.com</p>
+                <p><span class="font-medium">Address:</span> 123 Main St, New York, NY</p>
+                <p><span class="font-medium">Date of Registration:</span> 15 Jan 2024</p>
+            </div>
+            <button onclick="toggleEdit('personal')" class="edit-btn mt-4">✏️ Edit Profile</button>
+            <div id="personalEdit" class="edit-form mt-4 p-4 border rounded-lg">
+                <input type="text" placeholder="Full Name" value="John Doe">
+                <input type="text" placeholder="Age / Gender" value="35 / Male">
+                <input type="text" placeholder="Blood Group" value="O+">
+                <input type="tel" placeholder="Contact Number" value="+1-234-567-8900">
+                <input type="email" placeholder="Email Address" value="john.doe@example.com">
+                <input type="text" placeholder="Address" value="123 Main St, New York, NY">
+                <button onclick="saveEdit('personal')" class="save-btn">Save Changes</button>
+                <button onclick="cancelEdit('personal')" class="cancel-btn">Cancel</button>
+            </div>
+        </div>
+
+        <!-- 2. Donor / Recipient Status -->
+        <div class="bg-white rounded-2xl shadow-md p-6 mb-6">
+            <h2 class="text-xl font-semibold text-gray-800 flex items-center gap-2 mb-4">
+                💚 Donor / Recipient Status
+            </h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full table-auto">
+                    <thead>
+                        <tr class="bg-gray-50">
+                            <th class="px-4 py-2 text-left">Role</th>
+                            <th class="px-4 py-2 text-left">Status</th>
+                            <th class="px-4 py-2 text-left">Last Updated</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-t">
+                            <td class="px-4 py-2">Donor</td>
+                            <td class="px-4 py-2 status-green">✅ Registered as Donor</td>
+                            <td class="px-4 py-2">10 Oct 2025</td>
+                        </tr>
+                        <tr class="border-t">
+                            <td class="px-4 py-2">Recipient</td>
+                            <td class="px-4 py-2 status-gray">❌ Not Registered</td>
+                            <td class="px-4 py-2">—</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="mt-4 flex gap-4">
+                <button class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">Become a Donor</button>
+                <button class="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600">Apply as Recipient</button>
+            </div>
+        </div>
+
+        <!-- 3. My Donations / Requests -->
+        <div class="bg-white rounded-2xl shadow-md p-6 mb-6">
+            <h2 class="text-xl font-semibold text-gray-800 flex items-center gap-2 mb-4">
+                🫀 My Donations / Requests
+            </h2>
+            <p class="text-gray-600 mb-4">As a registered donor, here are your pledged organs:</p>
+            <ul class="space-y-2">
+                <li class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                    <span>Kidney</span>
+                    <span class="text-sm text-gray-500">Pledged: 15 Jan 2024</span>
+                </li>
+                <li class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                    <span>Heart</span>
+                    <span class="text-sm text-gray-500">Pledged: 15 Jan 2024</span>
+                </li>
+                <li class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                    <span>Eyes</span>
+                    <span class="text-sm text-gray-500">Pledged: 15 Jan 2024</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 4. Connected Hospital / NGO -->
+        <div class="bg-white rounded-2xl shadow-md p-6 mb-6">
+            <h2 class="text-xl font-semibold text-gray-800 flex items-center gap-2 mb-4">
+                🏥 Connected Hospital / NGO
+            </h2>
+            <div class="space-y-2">
+                <p><span class="font-medium">Hospital Name:</span> City General Hospital</p>
+                <p><span class="font-medium">City / State:</span> New York, NY</p>
+                <p><span class="font-medium">Assigned Coordinator:</span> Dr. Jane Smith</p>
+                <p><span class="font-medium">Contact Information:</span> +1-234-567-8901 | jane.smith@citygen.com</p>
+            </div>
+            <div class="mt-4 flex gap-4">
+                <button class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">🧭 Change Hospital</button>
+                <button class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600">View Details</button>
+            </div>
+        </div>
+
+        <!-- 5. My Activity / Reports -->
+        <div class="bg-white rounded-2xl shadow-md p-6 mb-6">
+            <h2 class="text-xl font-semibold text-gray-800 flex items-center gap-2 mb-4">
+                📊 My Activity / Reports
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+                <div class="text-center p-4 bg-green-50 rounded-lg">
+                    <h3 class="text-2xl font-bold text-green-600">5</h3>
+                    <p class="text-gray-600">Total Lives Impacted 💞</p>
+                </div>
+                <div class="text-center p-4 bg-blue-50 rounded-lg">
+                    <h3 class="text-2xl font-bold text-blue-600">3</h3>
+                    <p class="text-gray-600">Donation Pledges 📃</p>
+                </div>
+                <div class="text-center p-4 bg-yellow-50 rounded-lg">
+                    <h3 class="text-2xl font-bold text-yellow-600">Verified</h3>
+                    <p class="text-gray-600">Verification Status 🔍</p>
+                </div>
+                <div class="text-center p-4 bg-purple-50 rounded-lg">
+                    <h3 class="text-2xl font-bold text-purple-600">2</h3>
+                    <p class="text-gray-600">Certificates Available</p>
+                </div>
+            </div>
+            <button class="bg-indigo-500 text-white px-6 py-2 rounded-lg hover:bg-indigo-600">View Reports</button>
+        </div>
+
+        <!-- 6. Settings / Preferences -->
+        <div class="bg-white rounded-2xl shadow-md p-6 mb-6">
+            <h2 class="text-xl font-semibold text-gray-800 flex items-center gap-2 mb-4">
+                ⚙️ Settings / Preferences
+            </h2>
+            <ul class="space-y-2">
+                <li><button class="w-full text-left px-4 py-2 hover:bg-gray-100 rounded-lg">🔑 Change Password</button></li>
+                <li><button class="w-full text-left px-4 py-2 hover:bg-gray-100 rounded-lg">🔔 Manage Notifications</button></li>
+                <li><button class="w-full text-left px-4 py-2 hover:bg-gray-100 rounded-lg">🔒 Privacy Settings</button></li>
+                <li><button class="w-full text-left px-4 py-2 hover:bg-gray-100 rounded-lg text-red-500">🗑️ Delete Account</button></li>
+            </ul>
+        </div>
+
+        <!-- 7. Motivational Section -->
+        <div class="bg-gradient-to-r from-green-50 to-teal-50 rounded-2xl shadow-md p-6 text-center">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">🌈 Inspiration</h2>
+            <p class="text-gray-700 italic font-medium">“Every organ you pledge is a second chance for someone’s tomorrow.”</p>
+        </div>
+    </div>
+
+    <script>
+        // Toggle Edit Mode
+        function toggleEdit(section) {
+            const info = document.getElementById(section + 'Info');
+            const edit = document.getElementById(section + 'Edit');
+            if (info && edit) {
+                info.style.display = 'none';
+                edit.style.display = 'block';
+            }
+        }
+
+        // Save Edit (demo: just hide and show alert-free)
+        function saveEdit(section) {
+            // In a real app, submit form data here
+            alert('Changes saved successfully!'); // Temporary for demo; remove if no alerts wanted
+            cancelEdit(section);
+        }
+
+        // Cancel Edit
+        function cancelEdit(section) {
+            const info = document.getElementById(section + 'Info');
+            const edit = document.getElementById(section + 'Edit');
+            if (info && edit) {
+                info.style.display = 'block';
+                edit.style.display = 'none';
+            }
+        }
+
+        // Button clicks (no alerts, just console log for demo)
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                if (e.target.textContent.includes('Edit') || e.target.textContent.includes('Save') || e.target.textContent.includes('Cancel')) return;
+                console.log('Navigating to:', e.target.textContent); // Demo log; replace with actual navigation
+            });
+        });
+    </script>
+</body>
+</html>

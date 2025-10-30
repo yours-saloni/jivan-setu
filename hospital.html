@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Hospitals — Connect with Verified Transplant Centers</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #00A86B 0%, #00C878 100%);
+        }
+        .card-shadow {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .hospital-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .hospital-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .filter-active {
+            background: #00A86B;
+            color: white;
+        }
+        .map-pin {
+            width: 30px;
+            height: 30px;
+            background: #00A86B;
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+            position: relative;
+            cursor: pointer;
+        }
+        .map-pin::after {
+            content: '';
+            width: 12px;
+            height: 12px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-green-50 to-emerald-50 min-h-full">
+   <!-- Header / Navigation -->
+    <header class="bg-white/90 backdrop-blur-sm shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="bg-red-500 p-3 rounded-full heartbeat">
+                        <span class="text-white text-2xl">❤️</span>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">JivanSetu</h1>
+                        <p class="text-sm text-gray-600">SaveLife</p>
+                    </div>
+                </div>
+     <!-- Navigation -->
+<nav class="hidden lg:flex space-x-8">
+  <a href="index.html" class="text-gray-700 hover:text-red-500 transition-colors font-medium">Home</a>
+  <a href="aboutus.html" class="text-gray-700 hover:text-red-500 transition-colors font-medium">About Us</a>
+  <a href="becomedonor.html" class="text-gray-700 hover:text-red-500 transition-colors font-medium">Become a Donor</a>
+  <a href="berecepient.html" class="text-gray-700 hover:text-red-500 transition-colors font-medium">Find a Recipient</a>
+  <a href="hospital.html" class="text-gray-700 hover:text-red-500 transition-colors font-medium">Hospitals</a>
+<a href="reports.html" class="text-gray-700 hover:text-red-500 transition-colors font-medium">Reports</a>
+  <a href="contact.html" class="text-gray-700 hover:text-red-500 transition-colors font-medium">Contact</a></nav>
+  <!-- Profile Icon -->
+               <div class="relative">
+    <button onclick="toggleProfileMenu()" class="flex items-center space-x-2 bg-green-100 hover:bg-green-200 p-3 rounded-full transition-colors relative">
+        <span class="text-2xl">👤</span>
+        <div class="notification-badge bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center absolute -top-1 -right-1">3</div>
+    </button>
+    <div id="profileMenu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-2 z-50">
+        <a href="login.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">🔐 Login/Register</a>
+        <a href="profile.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">👤 My Profile</a>
+        <a href="setting.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">⚙️ Settings</a>
+        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">🚪 Logout</a>
+    </div>
+</div>
+            </div>
+        </div>
+    </header>
+
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-bg text-white py-6">
+        <div class="container mx-auto px-4">
+            <h1 class="text-3xl font-bold text-center mb-2">🏥 Find Hospitals</h1>
+            <p class="text-center text-green-100 text-lg">Connect with Verified Transplant Centers</p>
+        </div>
+    </header>
+
+    <!-- Description Section -->
+    <section class="bg-white py-8">
+        <div class="container mx-auto px-4 max-w-4xl text-center">
+            <p class="text-gray-700 text-lg mb-4">
+                Searching for hospitals that handle organ donations or transplants?
+                Use our smart search and filter options to find <strong>authorized hospitals</strong>, 
+                <strong>blood banks</strong>, and <strong>organ transplant centers</strong> near you.
+            </p>
+            <p class="text-gray-600 mb-4">
+                All hospitals listed here are <strong class="text-green-600">verified</strong> and work under government-approved medical guidelines.
+            </p>
+            <p class="text-green-600 italic font-medium">✨ Because when every second counts, access to the right care matters.</p>
+        </div>
+    </section>
+
+    <!-- Search and Filter Section -->
+    <section class="bg-gray-50 py-6">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <!-- Search Bar -->
+            <div class="mb-6">
+                <div class="relative max-w-2xl mx-auto">
+                    <input 
+                        type="text" 
+                        id="searchInput"
+                        placeholder="🔍 Search by hospital name, city, or organ type…"
+                        class="w-full px-6 py-4 text-lg border-2 border-gray-200 rounded-full focus:border-green-500 focus:outline-none"
+                    >
+                    <button class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-green-600">
+                        🎙️
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filter Options -->
+            <div class="bg-white rounded-lg p-6 card-shadow mb-6">
+                <h3 class="text-lg font-semibold mb-4">📍 Filter Options</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Location</label>
+                        <select id="locationFilter" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:border-green-500 focus:outline-none">
+                            <option value="">Select Location</option>
+                            <option value="bangalore">Bangalore</option>
+                            <option value="mumbai">Mumbai</option>
+                            <option value="delhi">Delhi</option>
+                            <option value="chennai">Chennai</option>
+                            <option value="hyderabad">Hyderabad</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Organ Type</label>
+                        <select id="organFilter" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:border-green-500 focus:outline-none">
+                            <option value="">All Organs</option>
+                            <option value="heart">Heart</option>
+                            <option value="kidney">Kidney</option>
+                            <option value="liver">Liver</option>
+                            <option value="eyes">Eyes</option>
+                            <option value="lungs">Lungs</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Hospital Type</label>
+                        <select id="typeFilter" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:border-green-500 focus:outline-none">
+                            <option value="">All Types</option>
+                            <option value="government">Government</option>
+                            <option value="private">Private</option>
+                            <option value="ngo">NGO</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Availability</label>
+                        <select id="availabilityFilter" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:border-green-500 focus:outline-none">
+                            <option value="">All</option>
+                            <option value="available">Organs Available</option>
+                            <option value="slots">Transplant Slots Open</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <button onclick="applyFilters()" class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors">
+                        Apply Filters
+                    </button>
+                    <button onclick="detectLocation()" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                        📍 Use My Location
+                    </button>
+                    <button onclick="toggleView()" class="bg-gray-600 text-white px-6 py-2 rounded-lg hover:bg-gray-700 transition-colors">
+                        🗺️ <span id="viewToggle">Map View</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map View (Hidden by default) -->
+    <section id="mapView" class="hidden bg-white py-6">
+        <div class="container mx-auto px-4">
+            <div class="bg-gray-100 rounded-lg h-96 relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-br from-green-100 to-blue-100 flex items-center justify-center">
+                    <div class="text-center">
+                        <div class="text-6xl mb-4">🗺️</div>
+                        <p class="text-gray-600 text-lg">Interactive Map View</p>
+                        <p class="text-gray-500">Click on pins to view hospital details</p>
+                    </div>
+                </div>
+                <!-- Sample Map Pins -->
+                <div class="map-pin absolute" style="top: 30%; left: 25%;" onclick="showMapPopup('Fortis Hospital')"></div>
+                <div class="map-pin absolute" style="top: 50%; left: 60%;" onclick="showMapPopup('Apollo Hospital')"></div>
+                <div class="map-pin absolute" style="top: 70%; left: 40%;" onclick="showMapPopup('AIIMS Delhi')"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hospital Results -->
+    <section class="py-8">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-800">🏥 Hospital Results</h2>
+                <span class="text-gray-600" id="resultCount">Showing 6 hospitals</span>
+            </div>
+
+            <div id="hospitalList" class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Hospital Cards will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Hospitals -->
+    <section class="bg-white py-8 pb-24">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">⭐ Featured Transplant Centers</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-lg card-shadow">
+                    <h3 class="font-semibold text-lg mb-2">🏥 Hospitals Near You</h3>
+                    <p class="text-gray-600 mb-4">Auto-detected by GPS</p>
+                    <button onclick="detectLocation()" class="text-green-600 font-medium hover:text-green-700">Find Nearby →</button>
+                </div>
+                <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-lg card-shadow">
+                    <h3 class="font-semibold text-lg mb-2">⭐ Top-Rated Centers</h3>
+                    <p class="text-gray-600 mb-4">Based on verification level</p>
+                    <button onclick="showTopRated()" class="text-blue-600 font-medium hover:text-blue-700">View Top Rated →</button>
+                </div>
+                <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-lg card-shadow">
+                    <h3 class="font-semibold text-lg mb-2">🤝 Partner Hospitals</h3>
+                    <p class="text-gray-600 mb-4">Verified network partners</p>
+                    <button onclick="showPartners()" class="text-purple-600 font-medium hover:text-purple-700">View Partners →</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emergency Support Strip -->
+    <div class="fixed bottom-0 left-0 right-0 bg-red-600 text-white py-3 px-4 z-50">
+        <div class="container mx-auto flex items-center justify-between">
+            <div class="flex items-center">
+                <span class="text-xl mr-2">🚨</span>
+                <span class="font-medium">Emergency Helpline: 1800-XXX-XXXX</span>
+            </div>
+            <button onclick="callEmergency()" class="bg-white text-red-600 px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition-colors">
+                📱 Call Now
+            </button>
+        </div>
+    </div>
+
+    <!-- Hospital Detail Modal -->
+    <div id="hospitalModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-4">
+                    <h2 id="modalTitle" class="text-2xl font-bold text-gray-800"></h2>
+                    <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+                </div>
+                <div id="modalContent">
+                    <!-- Content will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample hospital data
+        const hospitals = [
+            {
+                id: 1,
+                name: "Fortis Hospital",
+                address: "Bannerghatta Road, Bengaluru",
+                contact: "+91 98765 43210",
+                organs: ["Kidney", "Liver", "Heart"],
+                type: "private",
+                location: "bangalore",
+                verified: true,
+                available: true,
+                rating: 4.8,
+                departments: ["Cardiology", "Nephrology", "Hepatology"],
+                doctors: ["Dr. Rajesh Kumar", "Dr. Priya Sharma"],
+                beds: 45,
+                icu: 12
+            },
+            {
+                id: 2,
+                name: "Apollo Hospital",
+                address: "Greams Lane, Chennai",
+                contact: "+91 98765 43211",
+                organs: ["Heart", "Lungs", "Eyes"],
+                type: "private",
+                location: "chennai",
+                verified: true,
+                available: false,
+                rating: 4.9,
+                departments: ["Cardiothoracic Surgery", "Ophthalmology"],
+                doctors: ["Dr. Suresh Rao", "Dr. Meera Nair"],
+                beds: 38,
+                icu: 8
+            },
+            {
+                id: 3,
+                name: "AIIMS Delhi",
+                address: "Ansari Nagar, New Delhi",
+                contact: "+91 98765 43212",
+                organs: ["Kidney", "Liver", "Heart", "Eyes"],
+                type: "government",
+                location: "delhi",
+                verified: true,
+                available: true,
+                rating: 4.7,
+                departments: ["All Specialties"],
+                doctors: ["Dr. Amit Singh", "Dr. Kavita Gupta"],
+                beds: 120,
+                icu: 25
+            },
+            {
+                id: 4,
+                name: "Manipal Hospital",
+                address: "HAL Airport Road, Bengaluru",
+                contact: "+91 98765 43213",
+                organs: ["Kidney", "Liver"],
+                type: "private",
+                location: "bangalore",
+                verified: true,
+                available: true,
+                rating: 4.6,
+                departments: ["Nephrology", "Hepatology"],
+                doctors: ["Dr. Ravi Patel", "Dr. Sunita Joshi"],
+                beds: 55,
+                icu: 15
+            },
+            {
+                id: 5,
+                name: "Tata Memorial Hospital",
+                address: "Parel, Mumbai",
+                contact: "+91 98765 43214",
+                organs: ["Eyes", "Kidney"],
+                type: "government",
+                location: "mumbai",
+                verified: true,
+                available: false,
+                rating: 4.8,
+                departments: ["Oncology", "Nephrology"],
+                doctors: ["Dr. Ashok Mehta", "Dr. Neha Agarwal"],
+                beds: 75,
+                icu: 18
+            },
+            {
+                id: 6,
+                name: "Narayana Health",
+                address: "Bommasandra, Bengaluru",
+                contact: "+91 98765 43215",
+                organs: ["Heart", "Kidney", "Liver"],
+                type: "private",
+                location: "bangalore",
+                verified: true,
+                available: true,
+                rating: 4.5,
+                departments: ["Cardiology", "Nephrology"],
+                doctors: ["Dr. Vikram Shah", "Dr. Pooja Reddy"],
+                beds: 65,
+                icu: 20
+            }
+        ];
+
+        let filteredHospitals = [...hospitals];
+        let isMapView = false;
+
+        function renderHospitals(hospitalList = filteredHospitals) {
+            const container = document.getElementById('hospitalList');
+            container.innerHTML = '';
+
+            hospitalList.forEach(hospital => {
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-lg p-6 card-shadow hospital-card cursor-pointer';
+                card.onclick = () => showHospitalDetails(hospital);
+
+                card.innerHTML = `
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-1">🏥 ${hospital.name}</h3>
+                            <p class="text-gray-600 flex items-center">📍 ${hospital.address}</p>
+                        </div>
+                        <div class="flex items-center">
+                            ${hospital.verified ? '<span class="text-green-600 text-xl">✅</span>' : ''}
+                            <span class="ml-2 text-sm text-gray-500">⭐ ${hospital.rating}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <p class="text-gray-700 mb-2">☎️ ${hospital.contact}</p>
+                        <div class="flex flex-wrap gap-2 mb-2">
+                            <span class="text-sm text-gray-600">🩺 Organs:</span>
+                            ${hospital.organs.map(organ => 
+                                `<span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">${organ}</span>`
+                            ).join('')}
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <span class="text-sm ${hospital.available ? 'text-green-600' : 'text-orange-600'}">
+                                📅 ${hospital.available ? 'Available Slots' : 'Waiting List'}
+                            </span>
+                            <span class="text-sm text-gray-600 capitalize">${hospital.type}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex gap-2 flex-wrap">
+                        <button onclick="event.stopPropagation(); callHospital('${hospital.contact}')" 
+                                class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors text-sm">
+                            📞 Call Now
+                        </button>
+                        <button onclick="event.stopPropagation(); getDirections('${hospital.address}')" 
+                                class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm">
+                            🗺️ Directions
+                        </button>
+                        <button onclick="event.stopPropagation(); sendOrganRequest(${hospital.id})" 
+                                class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors text-sm">
+                            💚 Send Request
+                        </button>
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+
+            document.getElementById('resultCount').textContent = `Showing ${hospitalList.length} hospitals`;
+        }
+
+        function applyFilters() {
+            const location = document.getElementById('locationFilter').value;
+            const organ = document.getElementById('organFilter').value;
+            const type = document.getElementById('typeFilter').value;
+            const availability = document.getElementById('availabilityFilter').value;
+            const search = document.getElementById('searchInput').value.toLowerCase();
+
+            filteredHospitals = hospitals.filter(hospital => {
+                const matchesLocation = !location || hospital.location === location;
+                const matchesOrgan = !organ || hospital.organs.some(o => o.toLowerCase().includes(organ));
+                const matchesType = !type || hospital.type === type;
+                const matchesAvailability = !availability || 
+                    (availability === 'available' && hospital.available) ||
+                    (availability === 'slots' && hospital.available);
+                const matchesSearch = !search || 
+                    hospital.name.toLowerCase().includes(search) ||
+                    hospital.address.toLowerCase().includes(search) ||
+                    hospital.organs.some(o => o.toLowerCase().includes(search));
+
+                return matchesLocation && matchesOrgan && matchesType && matchesAvailability && matchesSearch;
+            });
+
+            renderHospitals();
+        }
+
+        function detectLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        alert('📍 Location detected! Showing nearby hospitals...');
+                        // In a real app, this would filter by actual coordinates
+                        document.getElementById('locationFilter').value = 'bangalore';
+                        applyFilters();
+                    },
+                    (error) => {
+                        alert('Unable to detect location. Please select manually.');
+                    }
+                );
+            } else {
+                alert('Geolocation is not supported by this browser.');
+            }
+        }
+
+        function toggleView() {
+            isMapView = !isMapView;
+            const mapView = document.getElementById('mapView');
+            const hospitalList = document.getElementById('hospitalList').parentElement;
+            const toggleButton = document.getElementById('viewToggle');
+
+            if (isMapView) {
+                mapView.classList.remove('hidden');
+                hospitalList.classList.add('hidden');
+                toggleButton.textContent = 'List View';
+            } else {
+                mapView.classList.add('hidden');
+                hospitalList.classList.remove('hidden');
+                toggleButton.textContent = 'Map View';
+            }
+        }
+
+        function showMapPopup(hospitalName) {
+            alert(`📍 ${hospitalName}\n\nClick for more details or call directly!`);
+        }
+
+        function showHospitalDetails(hospital) {
+            const modal = document.getElementById('hospitalModal');
+            const title = document.getElementById('modalTitle');
+            const content = document.getElementById('modalContent');
+
+            title.textContent = hospital.name;
+            content.innerHTML = `
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="text-lg font-medium">🏥 ${hospital.name}</span>
+                        ${hospital.verified ? '<span class="text-green-600">✅ Verified</span>' : ''}
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <h4 class="font-medium mb-2">Contact Information</h4>
+                            <p class="text-gray-600">📍 ${hospital.address}</p>
+                            <p class="text-gray-600">☎️ ${hospital.contact}</p>
+                            <p class="text-gray-600">⭐ Rating: ${hospital.rating}/5</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-medium mb-2">Availability</h4>
+                            <p class="text-gray-600">🏥 Beds: ${hospital.beds}</p>
+                            <p class="text-gray-600">🚨 ICU: ${hospital.icu}</p>
+                            <p class="${hospital.available ? 'text-green-600' : 'text-orange-600'}">
+                                📅 ${hospital.available ? 'Slots Available' : 'Waiting List'}
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-medium mb-2">Supported Organs</h4>
+                        <div class="flex flex-wrap gap-2">
+                            ${hospital.organs.map(organ => 
+                                `<span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">${organ}</span>`
+                            ).join('')}
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-medium mb-2">Departments</h4>
+                        <p class="text-gray-600">${hospital.departments.join(', ')}</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-medium mb-2">Available Doctors</h4>
+                        <p class="text-gray-600">${hospital.doctors.join(', ')}</p>
+                    </div>
+                    
+                    <div class="flex gap-3 pt-4 border-t">
+                        <button onclick="callHospital('${hospital.contact}')" 
+                                class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors flex-1">
+                            📞 Call Hospital
+                        </button>
+                        <button onclick="getDirections('${hospital.address}')" 
+                                class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors flex-1">
+                            🗺️ Get Directions
+                        </button>
+                    </div>
+                    
+                    <button onclick="registerWithHospital(${hospital.id})" 
+                            class="w-full bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors">
+                        💚 Register as Donor/Recipient with this Hospital
+                    </button>
+                </div>
+            `;
+
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('hospitalModal').classList.add('hidden');
+        }
+
+        function callHospital(number) {
+            window.open(`tel:${number}`, '_blank');
+        }
+
+        function getDirections(address) {
+            const encodedAddress = encodeURIComponent(address);
+            window.open(`https://www.google.com/maps/search/${encodedAddress}`, '_blank', 'noopener,noreferrer');
+        }
+
+        function sendOrganRequest(hospitalId) {
+            alert('💚 Organ request sent successfully!\n\nThe hospital will contact you within 24 hours with available options.');
+        }
+
+        function registerWithHospital(hospitalId) {
+            alert('✅ Registration initiated!\n\nYou will be redirected to the hospital\'s registration portal.');
+        }
+
+        function callEmergency() {
+            window.open('tel:1800-XXX-XXXX', '_blank');
+        }
+
+        function showTopRated() {
+            const topRated = [...hospitals].sort((a, b) => b.rating - a.rating).slice(0, 3);
+            renderHospitals(topRated);
+        }
+
+        function showPartners() {
+            const partners = hospitals.filter(h => h.verified);
+            renderHospitals(partners);
+        }
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function() {
+            applyFilters();
+        });
+
+        // Close modal when clicking outside
+        document.getElementById('hospitalModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Initialize the page
+        renderHospitals();
+         
+    // Animate counters
+    function animateCounter(element, target) {
+        let current = 0;
+        const increment = target / 100;
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                current = target;
+                clearInterval(timer);
+            }
+            element.textContent = Math.floor(current).toLocaleString();
+        }, 20);
+    }
+
+    // Toggle function for the profile menu
+    function toggleProfileMenu() {
+        const menu = document.getElementById('profileMenu');
+        if (menu) {
+            menu.classList.toggle('hidden');
+        }
+    }
+
+    // Optional: Close menu when clicking outside (improves UX)
+    document.addEventListener('click', function(event) {
+        const menu = document.getElementById('profileMenu');
+        const button = event.target.closest('button[onclick="toggleProfileMenu()"]');
+        if (menu && !menu.contains(event.target) && !button) {
+            menu.classList.add('hidden');
+        }
+    });
+
+    // Optional: Close menu on link clicks (if you want to navigate away)
+    document.querySelectorAll('#profileMenu a').forEach(link => {
+        link.addEventListener('click', function() {
+            const menu = document.getElementById('profileMenu');
+            menu.classList.add('hidden');
+            // Add your navigation logic here, e.g., window.location.href = this.href;
+        });
+    });
+
+    // Start counter animation when section is visible
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counters = entry.target.querySelectorAll('.counter');
+                counters.forEach(counter => {
+                    const target = parseInt(counter.textContent.replace(/,/g, ''));
+                    animateCounter(counter, target);
+                });
+                observer.unobserve(entry.target);
+            }
+        });
+    });
+
+    observer.observe(document.querySelector('.py-16.bg-white'));
+
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98d6f51682e38adf',t:'MTc2MDI3NTg4NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

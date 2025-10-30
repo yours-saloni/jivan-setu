@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn More — Know, Care, and Save Lives</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, oklch(61.966% 0.17564 261.444), oklch(59.211% 0.23691 2.687));
+        }
+        
+        .heartbeat {
+            animation: heartbeat 2s ease-in-out infinite;
+        }
+        
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .counter {
+            font-weight: bold;
+            color: #00A86B;
+        }
+        
+        .organ-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .organ-icon:hover {
+            transform: translateY(-5px);
+            filter: drop-shadow(0 10px 20px rgba(0, 168, 107, 0.3));
+        }
+        
+        .myth-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .myth-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cta-button {
+            background: linear-gradient(45deg, #00A86B, #10B981);
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 168, 107, 0.4);
+        }
+        
+        .chatbot {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .chatbot:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-full">
+    <!-- Hero Section -->
+    <header class="text-center py-16 px-4">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-5xl font-bold text-gray-800 mb-6">
+                Learn More — Know, Care, and Save Lives
+            </h1>
+            <div class="heartbeat text-6xl mb-6">💚</div>
+            <div class="bg-white rounded-2xl p-8 shadow-lg mb-8">
+                <p class="text-xl text-gray-700 mb-4">
+                    Every 10 minutes, someone in the world needs a life-saving organ.
+                </p>
+                <p class="text-lg text-gray-600 mb-4">
+                    Yet thousands of organs go unutilized due to lack of awareness.
+                </p>
+                <p class="text-lg text-gray-600 mb-6">
+                    Learn how organ donation works, who can donate, and how your one decision can save up to 8 lives and heal 75 others. 💚
+                </p>
+                <p class="text-xl font-semibold text-green-600">
+                    ✨ Knowledge is the first step toward kindness.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <!-- What is Organ Donation Section -->
+    <section class="py-16 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">
+                🫀 What is Organ Donation?
+            </h2>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="bg-white rounded-2xl p-8 shadow-lg">
+                    <p class="text-lg text-gray-700 mb-4">
+                        Organ donation is the process of giving an organ or tissue to someone who needs a transplant.
+                    </p>
+                    <p class="text-lg text-gray-700 mb-4">
+                        It can happen after death (deceased donation) or while alive (living donation).
+                    </p>
+                    <p class="text-lg text-gray-700">
+                        Common organs donated include the heart, kidney, liver, lungs, eyes, and pancreas.
+                    </p>
+                </div>
+                <div class="grid grid-cols-3 gap-6">
+                    <div class="organ-icon text-center p-4 bg-white rounded-xl shadow-md">
+                        <div class="text-4xl mb-2">❤️</div>
+                        <p class="font-semibold text-gray-700">Heart</p>
+                    </div>
+                    <div class="organ-icon text-center p-4 bg-white rounded-xl shadow-md">
+                        <div class="text-4xl mb-2">🫘</div>
+                        <p class="font-semibold text-gray-700">Kidney</p>
+                    </div>
+                    <div class="organ-icon text-center p-4 bg-white rounded-xl shadow-md">
+                        <div class="text-4xl mb-2">🫁</div>
+                        <p class="font-semibold text-gray-700">Lungs</p>
+                    </div>
+                    <div class="organ-icon text-center p-4 bg-white rounded-xl shadow-md">
+                        <div class="text-4xl mb-2">🍃</div>
+                        <p class="font-semibold text-gray-700">Liver</p>
+                    </div>
+                    <div class="organ-icon text-center p-4 bg-white rounded-xl shadow-md">
+                        <div class="text-4xl mb-2">👁️</div>
+                        <p class="font-semibold text-gray-700">Eyes</p>
+                    </div>
+                    <div class="organ-icon text-center p-4 bg-white rounded-xl shadow-md">
+                        <div class="text-4xl mb-2">🩸</div>
+                        <p class="font-semibold text-gray-700">Pancreas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Organ Donation Matters -->
+    <section class="py-16 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">
+                💚 Why Organ Donation Matters
+            </h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center p-6 bg-gradient-to-br from-green-50 to-teal-50 rounded-2xl shadow-lg">
+                    <div class="text-5xl mb-4">🕊️</div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Save Lives</h3>
+                    <p class="text-gray-600">One donor can save up to 8 lives.</p>
+                </div>
+                <div class="text-center p-6 bg-gradient-to-br from-green-50 to-teal-50 rounded-2xl shadow-lg">
+                    <div class="text-5xl mb-4">💫</div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Create Hope</h3>
+                    <p class="text-gray-600">Families of donors often find peace in saving others.</p>
+                </div>
+                <div class="text-center p-6 bg-gradient-to-br from-green-50 to-teal-50 rounded-2xl shadow-lg">
+                    <div class="text-5xl mb-4">🩺</div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Medical Advancement</h3>
+                    <p class="text-gray-600">Helps improve medical treatments and transplant success rates.</p>
+                </div>
+                <div class="text-center p-6 bg-gradient-to-br from-green-50 to-teal-50 rounded-2xl shadow-lg">
+                    <div class="text-5xl mb-4">🌍</div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Social Impact</h3>
+                    <p class="text-gray-600">Promotes compassion and unity across society.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who Can Donate -->
+    <section class="py-16 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">
+                👥 Who Can Donate?
+            </h2>
+            <div class="bg-white rounded-2xl p-8 shadow-lg mb-8">
+                <p class="text-lg text-gray-700 mb-4 text-center">
+                    Almost anyone can register as a donor, regardless of age, gender, or background.
+                </p>
+                <p class="text-lg text-gray-700 text-center">
+                    Medical professionals decide which organs are suitable at the time of donation.
+                </p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 shadow-lg">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">🌱 Living Donation</h3>
+                    <p class="text-gray-700">A healthy person donates one kidney or part of their liver.</p>
+                </div>
+                <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8 shadow-lg">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">🕊️ Deceased Donation</h3>
+                    <p class="text-gray-700">Organs are donated after death with family consent.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How the Process Works -->
+    <section class="py-16 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">
+                ⚙️ How the Process Works
+            </h2>
+            <p class="text-lg text-gray-700 text-center mb-12">
+                The organ donation process is transparent and medically supervised.
+            </p>
+            <div class="grid md:grid-cols-5 gap-6">
+                <div class="text-center">
+                    <div class="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl">1️⃣</span>
+                    </div>
+                    <h3 class="font-bold text-gray-800 mb-2">Register</h3>
+                    <p class="text-sm text-gray-600">Register as a donor through the app</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl">2️⃣</span>
+                    </div>
+                    <h3 class="font-bold text-gray-800 mb-2">Verify</h3>
+                    <p class="text-sm text-gray-600">Medical profile gets verified</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl">3️⃣</span>
+                    </div>
+                    <h3 class="font-bold text-gray-800 mb-2">Check</h3>
+                    <p class="text-sm text-gray-600">Doctors check organ compatibility</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl">4️⃣</span>
+                    </div>
+                    <h3 class="font-bold text-gray-800 mb-2">Match</h3>
+                    <p class="text-sm text-gray-600">Matching and hospital coordination</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <span class="text-2xl">5️⃣</span>
+                    </div>
+                    <h3 class="font-bold text-gray-800 mb-2">Success</h3>
+                    <p class="text-sm text-gray-600">Successful transplant and recovery</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics & Awareness -->
+    <section class="py-16 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">
+                📊 Statistics & Awareness
+            </h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white rounded-2xl p-8 shadow-lg text-center">
+                    <div class="text-4xl mb-4">🩸</div>
+                    <div class="counter text-3xl font-bold mb-2" data-target="500000">0</div>
+                    <p class="text-gray-600">Indians await organ transplants each year</p>
+                </div>
+                <div class="bg-white rounded-2xl p-8 shadow-lg text-center">
+                    <div class="text-4xl mb-4">🫁</div>
+                    <div class="counter text-3xl font-bold mb-2" data-target="0.01">0</div>
+                    <p class="text-gray-600">% of people donate organs after death</p>
+                </div>
+                <div class="bg-white rounded-2xl p-8 shadow-lg text-center">
+                    <div class="text-4xl mb-4">💚</div>
+                    <div class="counter text-3xl font-bold mb-2" data-target="80">0</div>
+                    <p class="text-gray-600">lives impacted by 1 organ donor</p>
+                </div>
+                <div class="bg-white rounded-2xl p-8 shadow-lg text-center">
+                    <div class="text-4xl mb-4">👨‍⚕️</div>
+                    <div class="counter text-3xl font-bold mb-2" data-target="3">0</div>
+                    <p class="text-gray-600">India's global rank in transplant surgery volume</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Inspiring Stories -->
+    <section class="py-16 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">
+                🕊️ Inspiring Stories
+            </h2>
+            <div class="bg-gradient-to-br from-green-50 to-teal-50 rounded-2xl p-8 shadow-lg max-w-4xl mx-auto">
+                <div class="text-center">
+                    <div class="text-6xl mb-6">💬</div>
+                    <blockquote class="text-xl text-gray-700 italic mb-6">
+                        "After my brother passed away, his organs saved four people. Today, his heart still beats on."
+                    </blockquote>
+                    <p class="text-lg font-semibold text-green-600">— Priya Sharma, Donor's Sister</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Common Myths vs Facts -->
+    <section class="py-16 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">
+                🧠 Common Myths vs Facts
+            </h2>
+            <div class="space-y-6">
+                <div class="myth-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="p-6 cursor-pointer" onclick="toggleMyth('myth1')">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-xl font-bold text-red-600">❌ "I'm too old to donate."</h3>
+                            <span class="text-2xl" id="myth1-icon">+</span>
+                        </div>
+                    </div>
+                    <div id="myth1" class="hidden p-6 pt-0 border-t">
+                        <p class="text-lg text-green-600 font-semibold">✅ Age doesn't matter; medical condition does.</p>
+                    </div>
+                </div>
+                
+                <div class="myth-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="p-6 cursor-pointer" onclick="toggleMyth('myth2')">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-xl font-bold text-red-600">❌ "My religion doesn't allow it."</h3>
+                            <span class="text-2xl" id="myth2-icon">+</span>
+                        </div>
+                    </div>
+                    <div id="myth2" class="hidden p-6 pt-0 border-t">
+                        <p class="text-lg text-green-600 font-semibold">✅ Most major religions support organ donation.</p>
+                    </div>
+                </div>
+                
+                <div class="myth-card bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="p-6 cursor-pointer" onclick="toggleMyth('myth3')">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-xl font-bold text-red-600">❌ "Doctors won't try to save me if I'm a donor."</h3>
+                            <span class="text-2xl" id="myth3-icon">+</span>
+                        </div>
+                    </div>
+                    <div id="myth3" class="hidden p-6 pt-0 border-t">
+                        <p class="text-lg text-green-600 font-semibold">✅ Doctors always prioritize saving lives — donation is considered only after death is confirmed.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join the Movement -->
+    <section class="py-16 px-4 bg-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-bold text-gray-800 mb-8">
+                💬 Join the Movement
+            </h2>
+            <p class="text-xl text-gray-700 mb-8">
+                Now that you know how donation saves lives — take one more step.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                <button class="cta-button text-white px-8 py-4 rounded-2xl text-lg font-semibold">
+                    Become a Donor
+                </button>
+                <button class="bg-gray-100 text-gray-800 px-8 py-4 rounded-2xl text-lg font-semibold hover:bg-gray-200 transition-all">
+                    Find Hospitals
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chatbot -->
+    <div class="chatbot">
+        <div id="chatbot-window" class="hidden bg-white rounded-2xl shadow-2xl w-80 mb-4 overflow-hidden">
+            <div class="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-4">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <span class="text-2xl mr-2">🤖</span>
+                        <span class="font-semibold">Lina</span>
+                    </div>
+                    <button onclick="toggleChatbot()" class="text-white hover:text-gray-200">✕</button>
+                </div>
+            </div>
+            <div class="p-4 h-64 overflow-y-auto" id="chat-messages">
+                <div class="bg-gray-100 rounded-lg p-3 mb-3">
+                    <p class="text-sm text-gray-700">Hey! Want me to explain how organ donation works?</p>
+                </div>
+                <div class="bg-gray-100 rounded-lg p-3 mb-3">
+                    <p class="text-sm text-gray-700">I can show who can donate or help you register right now!</p>
+                </div>
+            </div>
+            <div class="p-4 border-t">
+                <div class="grid grid-cols-2 gap-2 mb-3">
+                    <button onclick="handleQuickReply('Who can donate?')" class="bg-blue-100 text-blue-700 text-xs p-2 rounded-lg hover:bg-blue-200 transition-all">
+                        Who can donate?
+                    </button>
+                    <button onclick="handleQuickReply('What organs can I donate?')" class="bg-blue-100 text-blue-700 text-xs p-2 rounded-lg hover:bg-blue-200 transition-all">
+                        What organs can I donate?
+                    </button>
+                    <button onclick="handleQuickReply('Show statistics')" class="bg-blue-100 text-blue-700 text-xs p-2 rounded-lg hover:bg-blue-200 transition-all">
+                        Show statistics
+                    </button>
+                    <button onclick="handleQuickReply('Register me now')" class="bg-green-100 text-green-700 text-xs p-2 rounded-lg hover:bg-green-200 transition-all">
+                        Register me now
+                    </button>
+                </div>
+                <div class="flex">
+                    <input type="text" id="chat-input" placeholder="Type your message..." class="flex-1 border rounded-l-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500">
+                    <button onclick="sendMessage()" class="bg-blue-500 text-white px-4 py-2 rounded-r-lg hover:bg-blue-600 transition-all">
+                        <span class="text-sm">Send</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <button onclick="toggleChatbot()" class="bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full w-16 h-16 flex items-center justify-center shadow-lg hover:shadow-xl transition-all">
+            <span class="text-2xl">🤖</span>
+        </button>
+    </div>
+
+    <script>
+        // Animated counters
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = parseFloat(counter.getAttribute('data-target'));
+                const increment = target / 100;
+                let current = 0;
+                
+                const updateCounter = () => {
+                    if (current < target) {
+                        current += increment;
+                        if (target === 0.01) {
+                            counter.textContent = current.toFixed(2);
+                        } else {
+                            counter.textContent = Math.ceil(current).toLocaleString();
+                        }
+                        setTimeout(updateCounter, 20);
+                    } else {
+                        if (target === 0.01) {
+                            counter.textContent = target.toFixed(2);
+                        } else {
+                            counter.textContent = target.toLocaleString();
+                        }
+                    }
+                };
+                updateCounter();
+            });
+        }
+
+        // Toggle myth cards
+        function toggleMyth(mythId) {
+            const mythContent = document.getElementById(mythId);
+            const icon = document.getElementById(mythId + '-icon');
+            
+            if (mythContent.classList.contains('hidden')) {
+                mythContent.classList.remove('hidden');
+                icon.textContent = '−';
+            } else {
+                mythContent.classList.add('hidden');
+                icon.textContent = '+';
+            }
+        }
+
+        // Initialize animations when page loads
+        window.addEventListener('load', () => {
+            setTimeout(animateCounters, 1000);
+        });
+
+        // Chatbot functionality
+        function toggleChatbot() {
+            const chatWindow = document.getElementById('chatbot-window');
+            chatWindow.classList.toggle('hidden');
+        }
+
+        function handleQuickReply(message) {
+            addMessage(message, 'user');
+            
+            setTimeout(() => {
+                let response = '';
+                switch(message) {
+                    case 'Who can donate?':
+                        response = 'Almost anyone can register as a donor, regardless of age, gender, or background! Medical professionals decide which organs are suitable at the time of donation. Both living and deceased donation are possible.';
+                        break;
+                    case 'What organs can I donate?':
+                        response = 'You can donate: Heart ❤️, Kidneys 🫘, Liver 🍃, Lungs 🫁, Eyes 👁️, Pancreas 🩸, and tissues. Living donors can give one kidney or part of their liver!';
+                        break;
+                    case 'Show statistics':
+                        response = 'Here are key facts: 5 lakh Indians await transplants yearly, only 0.01% donate after death, 1 donor can impact 80+ lives, and India ranks 3rd globally in transplant surgery!';
+                        break;
+                    case 'Register me now':
+                        response = 'Great decision! 🎉 To register as an organ donor, you can visit your nearest hospital, use official government portals, or contact organ donation organizations. Would you like me to help you find registration centers nearby?';
+                        break;
+                    default:
+                        response = 'I\'m here to help with organ donation questions! Use the quick buttons or ask me anything about donation, eligibility, or the process.';
+                }
+                addMessage(response, 'bot');
+            }, 1000);
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chat-input');
+            const message = input.value.trim();
+            if (message) {
+                addMessage(message, 'user');
+                input.value = '';
+                
+                setTimeout(() => {
+                    addMessage('Thanks for your question! I\'m here to help you learn about organ donation. Feel free to use the quick reply buttons for common questions!', 'bot');
+                }, 1000);
+            }
+        }
+
+        function addMessage(message, sender) {
+            const chatMessages = document.getElementById('chat-messages');
+            const messageDiv = document.createElement('div');
+            
+            if (sender === 'user') {
+                messageDiv.className = 'bg-blue-500 text-white rounded-lg p-3 mb-3 ml-8';
+            } else {
+                messageDiv.className = 'bg-gray-100 rounded-lg p-3 mb-3 mr-8';
+            }
+            
+            messageDiv.innerHTML = `<p class="text-sm">${message}</p>`;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Allow Enter key to send messages
+        document.getElementById('chat-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98d77319d503bdd5',t:'MTc2MDI4MTA0Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

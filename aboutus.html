@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - LifeLink</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #10b981, #059669);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .floating-heart {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .heartbeat {
+            animation: heartbeat 2s ease-in-out infinite;
+        }
+        
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-green-50 to-emerald-50 min-h-full">
+   <!-- Header / Navigation -->
+    <header class="bg-white/90 backdrop-blur-sm shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="bg-red-500 p-3 rounded-full heartbeat">
+                        <span class="text-white text-2xl">❤️</span>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">JivanSetu</h1>
+                        <p class="text-sm text-gray-600">SaveLife</p>
+                    </div>
+                </div>
+     <!-- Navigation -->
+<nav class="hidden lg:flex space-x-8">
+  <a href="index.html" class="text-gray-700 hover:text-red-500 transition-colors font-medium">Home</a>
+  <a href="aboutus.html" class="text-gray-700 hover:text-red-500 transition-colors font-medium">About Us</a>
+  <a href="becomedonor.html" class="text-gray-700 hover:text-red-500 transition-colors font-medium">Become a Donor</a>
+  <a href="berecepient.html" class="text-gray-700 hover:text-red-500 transition-colors font-medium">Find a Recipient</a>
+  <a href="hospital.html" class="text-gray-700 hover:text-red-500 transition-colors font-medium">Hospitals</a>
+<a href="reports.html" class="text-gray-700 hover:text-red-500 transition-colors font-medium">Reports</a>
+  <a href="contact.html" class="text-gray-700 hover:text-red-500 transition-colors font-medium">Contact</a></nav>
+  <!-- Profile Icon -->
+               <div class="relative">
+    <button onclick="toggleProfileMenu()" class="flex items-center space-x-2 bg-green-100 hover:bg-green-200 p-3 rounded-full transition-colors relative">
+        <span class="text-2xl">👤</span>
+        <div class="notification-badge bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center absolute -top-1 -right-1">3</div>
+    </button>
+    <div id="profileMenu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-2 z-50">
+        <a href="login.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">🔐 Login/Register</a>
+        <a href="profile.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">👤 My Profile</a>
+        <a href="setting.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">⚙️ Settings</a>
+        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">🚪 Logout</a>
+    </div>
+</div>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- Header Section -->
+    <div class="container mx-auto px-6 py-16">
+        <div class="text-center mb-16 fade-in">
+            <div class="floating-heart text-6xl mb-6">💚</div>
+            <h1 class="text-5xl md:text-6xl font-bold gradient-text mb-6">
+                About Us — Giving Life, Building Hope
+            </h1>
+            <div class="w-24 h-1 bg-gradient-to-r from-green-500 to-emerald-500 mx-auto rounded-full"></div>
+        </div>
+
+        <!-- Main Description -->
+        <div class="max-w-4xl mx-auto text-center mb-20 fade-in">
+            <p class="text-lg md:text-xl text-gray-700 leading-relaxed mb-8">
+                At <span class="font-semibold text-green-600">LifeLink</span>, we believe that one decision can save multiple lives. 
+                Our mission is to bridge the gap between organ donors, recipients, and hospitals through a safe, transparent, 
+                and compassionate digital platform.
+            </p>
+            <p class="text-lg md:text-xl text-gray-700 leading-relaxed mb-8">
+                We aim to make organ donation simpler, accessible, and trustworthy for everyone — because every heartbeat deserves another chance.
+            </p>
+            <p class="text-lg text-gray-600 leading-relaxed">
+                With verified medical partners, real-time matching, and awareness initiatives, LifeLink is not just an app — 
+                it's a movement to spread hope and humanity.
+            </p>
+        </div>
+
+        <!-- Mission & Vision Cards -->
+        <div class="grid md:grid-cols-2 gap-8 mb-20">
+            <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                <div class="text-4xl mb-4">🌿</div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Our Mission</h3>
+                <p class="text-gray-600 leading-relaxed">
+                    To connect lives through technology, create awareness about organ donation, and ensure that no life is lost waiting for an organ.
+                </p>
+            </div>
+            
+            <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                <div class="text-4xl mb-4">🎯</div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Our Vision</h3>
+                <p class="text-gray-600 leading-relaxed">
+                    A world where organ donation is a shared act of kindness, not a rare choice — where every person is aware, empowered, and ready to give the gift of life.
+                </p>
+            </div>
+        </div>
+
+        <!-- Core Values -->
+        <div class="mb-20">
+            <h3 class="text-3xl font-bold text-center text-gray-800 mb-12">🧭 Our Core Values</h3>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white rounded-xl p-6 text-center shadow-md card-hover">
+                    <div class="text-3xl mb-3">💚</div>
+                    <h4 class="font-semibold text-gray-800 mb-2">Compassion</h4>
+                    <p class="text-sm text-gray-600">Every life matters.</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 text-center shadow-md card-hover">
+                    <div class="text-3xl mb-3">🔐</div>
+                    <h4 class="font-semibold text-gray-800 mb-2">Transparency</h4>
+                    <p class="text-sm text-gray-600">Secure, verified, and ethical process.</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 text-center shadow-md card-hover">
+                    <div class="text-3xl mb-3">🤝</div>
+                    <h4 class="font-semibold text-gray-800 mb-2">Collaboration</h4>
+                    <p class="text-sm text-gray-600">Connecting hospitals, donors, and recipients.</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 text-center shadow-md card-hover">
+                    <div class="text-3xl mb-3">🌍</div>
+                    <h4 class="font-semibold text-gray-800 mb-2">Awareness</h4>
+                    <p class="text-sm text-gray-600">Educating people about the power of donation.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team Section -->
+        <div class="bg-white rounded-2xl p-8 md:p-12 shadow-lg mb-20">
+            <h3 class="text-3xl font-bold text-center text-gray-800 mb-8">🧑‍⚕️ Our Team</h3>
+            <div class="text-center mb-8">
+                <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                    Built by a passionate team of students and developers led by <span class="font-semibold text-green-600">Saloni</span>, 
+                    dedicated to using technology for social good.
+                </p>
+                <p class="text-gray-600">
+                    Supported by medical experts and volunteer organizations who believe in creating a healthier, more connected world.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center text-white text-xl font-bold mx-auto mb-3">S</div>
+                    <h4 class="font-semibold text-gray-800">Saloni Singh</h4>
+                    <p class="text-sm text-gray-600">Founder & Developer</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-500 rounded-full flex items-center justify-center text-white text-xl font-bold mx-auto mb-3">M</div>
+                    <h4 class="font-semibold text-gray-800">Medical Advisor</h4>
+                    <p class="text-sm text-gray-600">Healthcare Expert</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-400 to-purple-500 rounded-full flex items-center justify-center text-white text-xl font-bold mx-auto mb-3">U</div>
+                    <h4 class="font-semibold text-gray-800">UI/UX Designer</h4>
+                    <p class="text-sm text-gray-600">Design Specialist</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-gradient-to-br from-orange-400 to-orange-500 rounded-full flex items-center justify-center text-white text-xl font-bold mx-auto mb-3">D</div>
+                    <h4 class="font-semibold text-gray-800">Data Manager</h4>
+                    <p class="text-sm text-gray-600">API & Analytics</p>
+                </div>
+            </div>
+        </div>
+<!-- How It Works Timeline -->
+<section class="max-w-5xl mx-auto mt-24 px-6 fade-slide-in" id="how-it-works">
+  <h2 class="text-3xl font-bold text-center text-red-600 mb-12">How It Works</h2>
+  <ol class="relative border-l border-red-300">
+    <li class="mb-10 ml-6">
+      <span class="absolute -left-3 flex items-center justify-center w-6 h-6 bg-red-500 rounded-full text-white font-bold">1</span>
+      <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+        <h3 class="font-semibold text-lg mb-1">Register as Donor ✅</h3>
+        <p class="text-gray-600">Sign up and provide your details to become a registered organ donor.</p>
+      </div>
+    </li>
+    <li class="mb-10 ml-6">
+      <span class="absolute -left-3 flex items-center justify-center w-6 h-6 bg-red-500 rounded-full text-white font-bold">2</span>
+      <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+        <h3 class="font-semibold text-lg mb-1">Medical Compatibility Check 🧬</h3>
+        <p class="text-gray-600">Medical professionals verify compatibility to ensure safe organ matching.</p>
+      </div>
+    </li>
+    <li class="mb-10 ml-6">
+      <span class="absolute -left-3 flex items-center justify-center w-6 h-6 bg-red-500 rounded-full text-white font-bold">3</span>
+      <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+        <h3 class="font-semibold text-lg mb-1">Match Found 🔔</h3>
+        <p class="text-gray-600">A suitable recipient is matched with the donor based on medical criteria.</p>
+      </div>
+    </li>
+    <li class="mb-10 ml-6">
+      <span class="absolute -left-3 flex items-center justify-center w-6 h-6 bg-red-500 rounded-full text-white font-bold">4</span>
+      <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+        <h3 class="font-semibold text-lg mb-1">Life Saved ❤️</h3>
+        <p class="text-gray-600">The organ transplant is performed, giving a new chance at life.</p>
+      </div>
+    </li>
+  </ol>
+</section>
+        <!-- Impact Highlights -->
+        <div class="bg-gradient-to-r from-green-500 to-emerald-600 rounded-2xl p-8 text-white text-center mb-12">
+            <h3 class="text-2xl font-bold mb-8">Our Impact</h3>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="heartbeat">
+                    <div class="text-3xl mb-2">❤️</div>
+                    <div class="text-3xl font-bold">12,000+</div>
+                    <p class="text-green-100">Donors Inspired</p>
+                </div>
+                
+                <div class="heartbeat" style="animation-delay: 0.5s;">
+                    <div class="text-3xl mb-2">🏥</div>
+                    <div class="text-3xl font-bold">60+</div>
+                    <p class="text-green-100">Hospitals Connected</p>
+                </div>
+                
+                <div class="heartbeat" style="animation-delay: 1s;">
+                    <div class="text-3xl mb-2">🌎</div>
+                    <div class="text-3xl font-bold">8+</div>
+                    <p class="text-green-100">Lives Saved Per Donation</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="text-center">
+            <button class="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-semibold px-8 py-4 rounded-full text-lg shadow-lg transform hover:scale-105 transition-all duration-300">
+                Join the Mission
+            </button>
+            <p class="text-gray-600 mt-4">Together, we can save lives — one donation at a time.</p>
+        </div>
+    </div>
+ <script>
+    // Animate counters
+    function animateCounter(element, target) {
+        let current = 0;
+        const increment = target / 100;
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                current = target;
+                clearInterval(timer);
+            }
+            element.textContent = Math.floor(current).toLocaleString();
+        }, 20);
+    }
+
+    // Toggle function for the profile menu
+    function toggleProfileMenu() {
+        const menu = document.getElementById('profileMenu');
+        if (menu) {
+            menu.classList.toggle('hidden');
+        }
+    }
+
+    // Optional: Close menu when clicking outside (improves UX)
+    document.addEventListener('click', function(event) {
+        const menu = document.getElementById('profileMenu');
+        const button = event.target.closest('button[onclick="toggleProfileMenu()"]');
+        if (menu && !menu.contains(event.target) && !button) {
+            menu.classList.add('hidden');
+        }
+    });
+
+    // Optional: Close menu on link clicks (if you want to navigate away)
+    document.querySelectorAll('#profileMenu a').forEach(link => {
+        link.addEventListener('click', function() {
+            const menu = document.getElementById('profileMenu');
+            menu.classList.add('hidden');
+            // Add your navigation logic here, e.g., window.location.href = this.href;
+        });
+    });
+
+    // Start counter animation when section is visible
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counters = entry.target.querySelectorAll('.counter');
+                counters.forEach(counter => {
+                    const target = parseInt(counter.textContent.replace(/,/g, ''));
+                    animateCounter(counter, target);
+                });
+                observer.unobserve(entry.target);
+            }
+        });
+    });
+
+    observer.observe(document.querySelector('.py-16.bg-white'));
+</script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98d6901b6016a5d3',t:'MTc2MDI3MTc0OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
+

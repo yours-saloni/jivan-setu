@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports & Statistics - Tracking Lives Saved</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+        }
+        
+        .card-gradient-1 {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+        }
+        
+        .card-gradient-2 {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.1) 100%);
+        }
+        
+        .card-gradient-3 {
+            background: linear-gradient(135deg, rgba(245, 101, 101, 0.1) 0%, rgba(239, 68, 68, 0.1) 100%);
+        }
+        
+        .card-gradient-4 {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, rgba(147, 51, 234, 0.1) 100%);
+        }
+        
+        .counter {
+            font-weight: 700;
+            font-size: 2.5rem;
+        }
+        
+        .heartbeat {
+            animation: heartbeat 2s ease-in-out infinite;
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 300px;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-green-50 to-emerald-50 min-h-full">
+   <!-- Header / Navigation -->
+     <header class="bg-white/90 backdrop-blur-sm shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="bg-red-500 p-3 rounded-full heartbeat">
+                        <span class="text-white text-2xl">❤️</span>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800">JivanSetu</h1>
+                        <p class="text-sm text-gray-600">SaveLife</p>
+                    </div>
+                </div>
+     <!-- Navigation -->
+<nav class="hidden lg:flex space-x-8">
+  <a href="index.html" class="text-gray-700 hover:text-red-500 transition-colors font-medium">Home</a>
+  <a href="aboutus.html" class="text-gray-700 hover:text-red-500 transition-colors font-medium">About Us</a>
+  <a href="becomedonor.html" class="text-gray-700 hover:text-red-500 transition-colors font-medium">Become a Donor</a>
+  <a href="berecepient.html" class="text-gray-700 hover:text-red-500 transition-colors font-medium">Find a Recipient</a>
+  <a href="hospital.html" class="text-gray-700 hover:text-red-500 transition-colors font-medium">Hospitals</a>
+<a href="reports.html" class="text-gray-700 hover:text-red-500 transition-colors font-medium">Reports</a>
+  <a href="contact.html" class="text-gray-700 hover:text-red-500 transition-colors font-medium">Contact</a></nav>
+  <!-- Profile Icon -->
+               <div class="relative">
+    <button onclick="toggleProfileMenu()" class="flex items-center space-x-2 bg-green-100 hover:bg-green-200 p-3 rounded-full transition-colors relative">
+        <span class="text-2xl">👤</span>
+        <div class="notification-badge bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center absolute -top-1 -right-1">3</div>
+    </button>
+    <div id="profileMenu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-2 z-50">
+        <a href="login.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">🔐 Login/Register</a>
+        <a href="profile.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">👤 My Profile</a>
+        <a href="setting.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">⚙️ Settings</a>
+        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">🚪 Logout</a>
+    </div>
+</div>
+            </div>
+        </div>
+    </header>
+
+<body class="bg-gray-50 min-h-full">
+    <!-- Header -->
+    <header class="gradient-bg text-white py-8">
+        <div class="container mx-auto px-6">
+            <div class="text-center">
+                <h1 class="text-4xl font-bold mb-4">📊 Reports & Statistics</h1>
+                <p class="text-xl opacity-90">Tracking Lives Saved</p>
+                <p class="mt-4 text-lg opacity-80 max-w-3xl mx-auto">
+                    Transparency builds trust. See the real-time impact created through organ donation — one life at a time.
+                </p>
+                <p class="mt-2 text-sm opacity-70 italic">✨ Because every number here represents a story of hope.</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Overview Summary Cards -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">📈 Live Impact Dashboard</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Total Donors Card -->
+                <div class="card-gradient-1 rounded-xl p-6 text-center shadow-lg fade-in">
+                    <div class="text-4xl mb-3">👤</div>
+                    <h3 class="text-lg font-semibold text-gray-700 mb-2">Total Registered Donors</h3>
+                    <div class="counter text-blue-600" id="donorCount">0</div>
+                    <p class="text-sm text-gray-500 mt-2">+47 this week</p>
+                </div>
+
+                <!-- Total Recipients Card -->
+                <div class="card-gradient-2 rounded-xl p-6 text-center shadow-lg fade-in">
+                    <div class="text-4xl mb-3 heartbeat">❤️</div>
+                    <h3 class="text-lg font-semibold text-gray-700 mb-2">Total Recipients</h3>
+                    <div class="counter text-emerald-600" id="recipientCount">0</div>
+                    <p class="text-sm text-gray-500 mt-2">+23 this week</p>
+                </div>
+
+                <!-- Hospitals Connected Card -->
+                <div class="card-gradient-3 rounded-xl p-6 text-center shadow-lg fade-in">
+                    <div class="text-4xl mb-3">🏥</div>
+                    <h3 class="text-lg font-semibold text-gray-700 mb-2">Hospitals Connected</h3>
+                    <div class="counter text-red-500" id="hospitalCount">0</div>
+                    <p class="text-sm text-gray-500 mt-2">+3 this month</p>
+                </div>
+
+                <!-- Successful Transplants Card -->
+                <div class="card-gradient-4 rounded-xl p-6 text-center shadow-lg fade-in">
+                    <div class="text-4xl mb-3">🫀</div>
+                    <h3 class="text-lg font-semibold text-gray-700 mb-2">Successful Transplants</h3>
+                    <div class="counter text-purple-600" id="transplantCount">0</div>
+                    <p class="text-sm text-gray-500 mt-2">+8 this week</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Charts Section -->
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">📊 Donation Statistics</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                <!-- Organ Donations Bar Chart -->
+                <div class="bg-white rounded-xl p-6 shadow-lg">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-700">Organs Donated by Type</h3>
+                    <div class="chart-container">
+                        <canvas id="organChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Donor vs Recipient Pie Chart -->
+                <div class="bg-white rounded-xl p-6 shadow-lg">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-700">Donor vs Recipient Ratio</h3>
+                    <div class="chart-container">
+                        <canvas id="ratioChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Monthly Trend Line Chart -->
+            <div class="bg-white rounded-xl p-6 shadow-lg">
+                <h3 class="text-xl font-semibold mb-4 text-gray-700">Monthly Donation Trends</h3>
+                <div class="chart-container">
+                    <canvas id="trendChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- My Reports Section -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">🧍‍♀️ My Personal Report</h2>
+            
+            <div class="max-w-4xl mx-auto bg-gray-50 rounded-xl p-8 shadow-lg">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4 text-gray-700">Donor Information</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Donor ID:</span>
+                                <span class="font-medium">DN-2024-001234</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Registration Date:</span>
+                                <span class="font-medium">March 15, 2024</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Organs Pledged:</span>
+                                <span class="font-medium">Heart, Kidney, Liver</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Verification Status:</span>
+                                <span class="font-medium text-green-600">✅ Verified</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4 text-gray-700">Hospital & Updates</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Linked Hospital:</span>
+                                <span class="font-medium">City General Hospital</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Last Update:</span>
+                                <span class="font-medium">December 10, 2024</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Emergency Contact:</span>
+                                <span class="font-medium">Updated ✅</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Medical Records:</span>
+                                <span class="font-medium">Current ✅</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6 text-center">
+                    <button class="bg-gradient-to-r from-purple-500 to-purple-600 text-white px-6 py-3 rounded-lg font-medium hover:from-purple-600 hover:to-purple-700 transition-all">
+                        ⬇️ Download My Report (PDF)
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="py-12 gradient-bg text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-4">🌍 Real-Time Impact</h2>
+            <p class="text-xl mb-8 opacity-90">"Every data point represents a heartbeat restored."</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                <div class="bg-white bg-opacity-20 rounded-xl p-6">
+                    <div class="text-3xl mb-2">💚</div>
+                    <div class="text-2xl font-bold" id="livesThisWeek">8+</div>
+                    <p class="text-sm opacity-80">Lives saved this week</p>
+                </div>
+                
+                <div class="bg-white bg-opacity-20 rounded-xl p-6">
+                    <div class="text-3xl mb-2">🌱</div>
+                    <div class="text-2xl font-bold" id="activeDonors">240+</div>
+                    <p class="text-sm opacity-80">Active donors today</p>
+                </div>
+                
+                <div class="bg-white bg-opacity-20 rounded-xl p-6">
+                    <div class="text-3xl mb-2">🏥</div>
+                    <div class="text-2xl font-bold" id="newHospitals">15+</div>
+                    <p class="text-sm opacity-80">New hospitals this month</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download & Share Section -->
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-8 text-gray-800">📁 Download & Share Reports</h2>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button class="bg-gradient-to-r from-emerald-500 to-emerald-600 text-white px-8 py-4 rounded-lg font-medium hover:from-emerald-600 hover:to-emerald-700 transition-all flex items-center justify-center gap-2">
+                    ⬇️ Download Full Report (PDF)
+                </button>
+                
+                <button class="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-lg font-medium hover:from-orange-600 hover:to-orange-700 transition-all flex items-center justify-center gap-2">
+                    📤 Share Impact on Social Media
+                </button>
+            </div>
+            
+            <p class="mt-4 text-gray-600 italic">Help spread awareness about organ donation!</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-lg font-medium mb-2">"Turning data into life stories."</p>
+            <p class="text-sm opacity-70">Every number is a life touched. Impact you can see, trust you can feel.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Counter Animation
+        function animateCounter(elementId, targetValue, duration = 2000) {
+            const element = document.getElementById(elementId);
+            const startValue = 0;
+            const increment = targetValue / (duration / 16);
+            let currentValue = startValue;
+            
+            const timer = setInterval(() => {
+                currentValue += increment;
+                if (currentValue >= targetValue) {
+                    element.textContent = targetValue.toLocaleString();
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(currentValue).toLocaleString();
+                }
+            }, 16);
+        }
+
+        // Initialize counters
+        window.addEventListener('load', () => {
+            animateCounter('donorCount', 2354);
+            animateCounter('recipientCount', 1820);
+            animateCounter('hospitalCount', 72);
+            animateCounter('transplantCount', 612);
+        });
+
+        // Organ Donations Bar Chart
+        const organCtx = document.getElementById('organChart').getContext('2d');
+        new Chart(organCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Heart', 'Kidney', 'Liver', 'Lungs', 'Cornea', 'Pancreas'],
+                datasets: [{
+                    label: 'Organs Donated',
+                    data: [45, 180, 95, 32, 240, 28],
+                    backgroundColor: [
+                        '#2563eb',
+                        '#10b981',
+                        '#ef4444',
+                        '#a855f7',
+                        '#f59e0b',
+                        '#06b6d4'
+                    ],
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Donor vs Recipient Pie Chart
+        const ratioCtx = document.getElementById('ratioChart').getContext('2d');
+        new Chart(ratioCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Registered Donors', 'Recipients'],
+                datasets: [{
+                    data: [2354, 1820],
+                    backgroundColor: ['#2563eb', '#10b981'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+
+        // Monthly Trend Line Chart
+        const trendCtx = document.getElementById('trendChart').getContext('2d');
+        new Chart(trendCtx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [{
+                    label: 'Monthly Donations',
+                    data: [45, 52, 48, 61, 55, 67, 73, 69, 78, 82, 88, 95],
+                    borderColor: '#a855f7',
+                    backgroundColor: 'rgba(168, 85, 247, 0.1)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Button functionality
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (this.textContent.includes('Download')) {
+                    alert('📄 Report download initiated! Your comprehensive organ donation report will be ready shortly.');
+                } else if (this.textContent.includes('Share')) {
+                    alert('📤 Opening social media sharing options to help spread awareness about organ donation!');
+                }
+            });
+        });
+         
+    // Animate counters
+    function animateCounter(element, target) {
+        let current = 0;
+        const increment = target / 100;
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                current = target;
+                clearInterval(timer);
+            }
+            element.textContent = Math.floor(current).toLocaleString();
+        }, 20);
+    }
+
+    // Toggle function for the profile menu
+    function toggleProfileMenu() {
+        const menu = document.getElementById('profileMenu');
+        if (menu) {
+            menu.classList.toggle('hidden');
+        }
+    }
+
+    // Optional: Close menu when clicking outside (improves UX)
+    document.addEventListener('click', function(event) {
+        const menu = document.getElementById('profileMenu');
+        const button = event.target.closest('button[onclick="toggleProfileMenu()"]');
+        if (menu && !menu.contains(event.target) && !button) {
+            menu.classList.add('hidden');
+        }
+    });
+
+    // Optional: Close menu on link clicks (if you want to navigate away)
+    document.querySelectorAll('#profileMenu a').forEach(link => {
+        link.addEventListener('click', function() {
+            const menu = document.getElementById('profileMenu');
+            menu.classList.add('hidden');
+            // Add your navigation logic here, e.g., window.location.href = this.href;
+        });
+    });
+
+    // Start counter animation when section is visible
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counters = entry.target.querySelectorAll('.counter');
+                counters.forEach(counter => {
+                    const target = parseInt(counter.textContent.replace(/,/g, ''));
+                    animateCounter(counter, target);
+                });
+                observer.unobserve(entry.target);
+            }
+        });
+    });
+
+    observer.observe(document.querySelector('.py-16.bg-white'));
+
+
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98d7029837bd59ee',t:'MTc2MDI3NjQzOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
